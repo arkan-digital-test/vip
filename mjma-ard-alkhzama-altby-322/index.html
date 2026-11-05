@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title id="page-title">Loading...</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --title-color: #8c702c;
+            --text-color: #1f2937;
+            --accent-color: #a68a3d;
+            --wa-btn-color: #059669;
+            --dark-bar: #232621;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: #fcfbf9;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        .font-ar { font-family: 'Cairo', sans-serif; }
+        .font-en { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-logo { font-family: 'Cinzel', 'Plus Jakarta Sans', serif; }
+
+        .dyn-title { color: var(--title-color) !important; }
+        .dyn-text { color: var(--text-color) !important; }
+        .dyn-accent-text { color: var(--accent-color) !important; }
+        .dyn-accent-bg { background-color: var(--accent-color) !important; }
+        .dyn-accent-border { border-color: var(--accent-color) !important; }
+        .dyn-wa-btn {
+            background-color: var(--wa-btn-color) !important;
+            color: #ffffff !important;
+        }
+        .dyn-wa-btn:hover {
+            filter: brightness(1.08);
+            transform: translateY(-2px);
+        }
+
+        /* Hide Powered by Netlify badge on Mobile & Desktop */
+        iframe[src*="netlify"],
+        div[class*="netlify"],
+        a[href*="netlify.com"],
+        [data-netlify-deploy-badge] {
+            display: none !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+        }
+
+        .luxury-cover-bg {
+            background: radial-gradient(circle at center, #ffffff 0%, #f3efe4 65%, #e8e0cc 100%);
+        }
+
+        .royal-card {
+            background: #ffffff;
+            border: 1px solid rgba(166, 138, 61, 0.2);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .royal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        #lightbox-modal { touch-action: none; user-select: none; }
+        #lightbox-img {
+            transition: transform 0.15s ease-out;
+            transform-origin: center center;
+            max-height: 85vh;
+            max-width: 94vw;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body class="font-ar antialiased" id="body-root">
+
+    <!-- FULLSCREEN PINCH-TO-ZOOM PHOTO VIEWER -->
+    <div id="lightbox-modal" class="fixed inset-0 z-[100] bg-black/95 hidden flex-col justify-between p-4 backdrop-blur-xl">
+        <div class="flex items-center justify-between z-20 max-w-6xl w-full mx-auto pt-1">
+            <div class="flex items-center gap-2 bg-white/10 border border-white/15 px-3.5 py-1.5 rounded-full text-xs font-bold text-white">
+                <i class="fa-solid fa-magnifying-glass-plus text-emerald-400"></i>
+                <span id="lightbox-counter">1 / 4</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="zoomLightbox(0.4)" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-plus"></i></button>
+                <button onclick="zoomLightbox(-0.4)" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm"><i class="fa-solid fa-minus"></i></button>
+                <button onclick="resetLightboxZoom()" class="px-3 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white text-xs font-bold">100%</button>
+                <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center text-lg shadow-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+
+        <div id="lightbox-stage" class="relative flex-1 flex items-center justify-center overflow-hidden my-2">
+            <button onclick="changeLightboxSlide(-1)" class="absolute right-2 sm:right-6 z-20 w-11 h-11 rounded-full bg-black/60 border border-white/20 hover:bg-emerald-600 text-white flex items-center justify-center text-lg shadow-xl transition">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Full View" referrerpolicy="no-referrer" class="rounded-xl shadow-2xl select-none">
+            <button onclick="changeLightboxSlide(1)" class="absolute left-2 sm:left-6 z-20 w-11 h-11 rounded-full bg-black/60 border border-white/20 hover:bg-emerald-600 text-white flex items-center justify-center text-lg shadow-xl transition">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+        </div>
+
+        <div class="text-center pb-2 z-20">
+            <span id="lightbox-hint" class="inline-block bg-white/10 text-white/90 text-[11px] px-4 py-1.5 rounded-full border border-white/10">
+                💡 يمكنك تكبير الصورة بإصبعين (Pinch Zoom) أو النقر مرتين على الصورة
+            </span>
+        </div>
+    </div>
+
+    <!-- 1. TOP DARK LUXURY BAR -->
+    <div class="bg-[#232621] text-[#d4af37] py-2 px-4 text-xs font-semibold border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="#booking" class="text-emerald-400 hover:text-white transition" title="WhatsApp"><i class="fa-brands fa-whatsapp text-sm"></i></a>
+                <a id="top-map-link" href="#booking" target="_blank" class="hover:text-white transition" title="Google Maps"><i class="fa-solid fa-location-dot text-sm"></i></a>
+                <span class="bg-white/10 text-amber-300 border border-amber-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1 text-[11px] font-bold">
+                    <i class="fa-solid fa-star text-amber-400"></i> <span id="top-rating">4.9</span>
+                </span>
+            </div>
+            <div class="overflow-hidden flex-1 text-left sm:text-center truncate">
+                <span id="top-welcome-ticker" class="text-[11px] sm:text-xs text-[#f3e5ab] font-bold tracking-wide"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. PURE WHITE HEADER WITH LOGO & GREEN WHATSAPP CTA -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 sm:h-24 flex items-center justify-between gap-3">
+            <nav class="hidden lg:flex items-center gap-7 text-sm font-bold dyn-text">
+                <a href="#cover-section" id="nav-home" class="dyn-accent-text hover:opacity-80 transition font-extrabold">الصفحة الرئيسية</a>
+                <a href="#booking" id="nav-book" class="hover:opacity-75 transition">احجز الآن</a>
+                <a href="#services" id="nav-services" class="hover:opacity-75 transition">الخدمات والتخصصات</a>
+                <a href="#gallery" id="nav-gallery" class="hover:opacity-75 transition">معرض الصور</a>
+                <a href="#reviews" id="nav-reviews" class="hover:opacity-75 transition">آراء العملاء</a>
+            </nav>
+
+            <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+                <a href="#booking" id="nav-cta-btn" class="dyn-wa-btn px-4 sm:px-5 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm shadow-md shadow-emerald-600/20 flex items-center gap-2 transition duration-200">
+                    <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
+                    <span id="nav-cta-text">احجز موعدك الآن</span>
+                </a>
+                <button onclick="openLightbox(0)" class="w-10 h-10 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 flex items-center justify-center border border-stone-200 transition" title="Gallery">
+                    <i class="fa-regular fa-images"></i>
+                </button>
+            </div>
+
+            <a href="#cover-section" class="flex items-center gap-2.5 min-w-0 select-none" dir="ltr">
+                <div id="custom-svg-logo" class="flex items-center"></div>
+            </a>
+        </div>
+    </header>
+
+    <!-- 3. WIDE LUXURY COVER BANNER -->
+    <section id="cover-section" class="relative w-full luxury-cover-bg border-b border-[#e5dec9] overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center min-h-[240px] sm:min-h-[310px]">
+                <div class="hidden lg:block lg:col-span-3 h-[310px] relative overflow-hidden">
+                    <img id="cover-img-right" src="" alt="Cover Visual" referrerpolicy="no-referrer" class="w-full h-full object-cover object-center">
+                    <div class="absolute inset-0 bg-gradient-to-l from-transparent via-[#f3efe4]/50 to-[#f3efe4]"></div>
+                </div>
+
+                <div class="lg:col-span-6 py-10 sm:py-12 px-5 sm:px-8 text-center space-y-3 z-10">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 dyn-accent-text border border-stone-300 text-xs font-extrabold shadow-sm">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
+                        <span id="cover-badge">نستقبل الحجوزات والاستفسارات مباشرة عبر واتساب</span>
+                    </div>
+
+                    <h2 id="hero-title" class="text-2xl sm:text-3xl md:text-4xl font-black dyn-title leading-snug"></h2>
+                    <p id="cover-Sub-breadcrumb" class="text-xs sm:text-sm font-bold dyn-text opacity-80 pt-1"></p>
+
+                    <div class="lg:hidden pt-3">
+                        <div onclick="openLightbox(0)" class="relative rounded-2xl overflow-hidden shadow-md border border-stone-300 aspect-[16/10] max-w-md mx-auto cursor-pointer group">
+                            <img id="mobile-hero-img" src="" alt="Clinic Photo" referrerpolicy="no-referrer" class="w-full h-full object-cover">
+                            <div class="absolute bottom-2.5 left-2.5 bg-black/70 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                                <i class="fa-solid fa-expand text-emerald-400"></i>
+                                <span id="mobile-zoom-label">اضغط لتكبير الصورة</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block lg:col-span-3 h-[310px] relative overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
+                    <img id="cover-img-left" src="" alt="Showcase" referrerpolicy="no-referrer" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-[#f3efe4]/40 to-[#f3efe4]"></div>
+                    <div class="absolute bottom-3 left-3 bg-black/65 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                        <i class="fa-solid fa-magnifying-glass-plus text-emerald-400"></i>
+                        <span id="desktop-zoom-label">تكبير الصورة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. TWO-COLUMN BOOKING & CONTACT SECTION -->
+    <section id="booking" class="py-12 sm:py-16 bg-white border-b border-stone-200/80">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-3xl mb-10 space-y-2">
+                <span id="booking-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">اتصل بنا واحجز موعدك</span>
+                <h3 id="booking-main-heading" class="text-2xl sm:text-3xl font-black dyn-title">احجز موعدك اليوم</h3>
+                <p id="hero-desc" class="text-sm sm:text-base dyn-text opacity-85 leading-relaxed font-medium"></p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-5 space-y-6 order-2 lg:order-1 bg-[#faf8f2] p-6 sm:p-8 rounded-2xl border border-[#e8e0cc]">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 id="lbl-addr-title" class="font-extrabold text-sm sm:text-base dyn-title">العنوان:</h4>
+                            <p id="booking-address" class="text-xs sm:text-sm dyn-text opacity-85 mt-1 leading-relaxed font-medium"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 pt-4 border-t border-[#e8e0cc]">
+                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                            <i class="fa-solid fa-phone-volume"></i>
+                        </div>
+                        <div>
+                            <h4 id="lbl-phone-title" class="font-extrabold text-sm sm:text-base dyn-title">الهاتف والواتساب المباشر:</h4>
+                            <p id="booking-phone" class="text-sm sm:text-base dyn-accent-text font-black mt-1" dir="ltr"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 pt-4 border-t border-[#e8e0cc]">
+                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 id="lbl-hours-title" class="font-extrabold text-sm sm:text-base dyn-title">ساعات العمل:</h4>
+                            <p id="booking-hours" class="text-xs sm:text-sm dyn-text mt-1 font-bold leading-relaxed"></p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 pt-4 border-t border-[#e8e0cc]">
+                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                            <i class="fa-brands fa-google"></i>
+                        </div>
+                        <div>
+                            <h4 id="lbl-rating-title" class="font-extrabold text-sm sm:text-base dyn-title">التقييم العام في خرائط جوجل:</h4>
+                            <p class="text-xs sm:text-sm dyn-text mt-1 font-bold">
+                                <span id="stat-rating" class="text-amber-600 font-black">4.9 ⭐</span>
+                                (<span id="stat-reviews">+120</span> <span id="lbl-reviews-word">مراجعة وتقييم موثق</span>)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 order-1 lg:order-2">
+                    <form onsubmit="sendToWhatsApp(event)" class="royal-card p-6 sm:p-8 rounded-2xl space-y-5">
+                        <div class="flex items-center justify-between border-b border-stone-100 pb-4">
+                            <h4 id="form-heading" class="text-lg sm:text-xl font-black dyn-title">راسلنا واحجز موعدك فوراً</h4>
+                            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> <span id="form-badge">تأكيد فوري</span>
+                            </span>
+                        </div>
+
+                        <div>
+                            <label id="label-name" class="block text-xs font-extrabold dyn-text mb-1.5">الاسم الكريم *</label>
+                            <input type="text" id="input-name" required placeholder="أدخل اسمك الكامل..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label id="label-service" class="block text-xs font-extrabold dyn-text mb-1.5">الخدمة أو التخصص المطلوب *</label>
+                                <select id="input-service" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                            </div>
+                            <div>
+                                <label id="label-time" class="block text-xs font-extrabold dyn-text mb-1.5">الوقت المفضل للزيارة *</label>
+                                <select id="input-time" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label id="label-notes" class="block text-xs font-extrabold dyn-text mb-1.5">الرسالة أو الملاحظات (اختياري)</label>
+                            <textarea id="input-notes" rows="3" placeholder="اكتب أي استفسار أو تفاصيل تود إضافتها..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></textarea>
+                        </div>
+
+                        <button type="submit" class="dyn-wa-btn w-full py-4 px-6 rounded-xl font-black text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 transition duration-200">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            <span id="submit-btn-text">إرسال الطلب وتأكيد الموعد عبر واتساب</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. REAL SERVICES SECTION -->
+    <section id="services" class="py-14 sm:py-20 bg-[#f7f4ec] border-b border-[#e8e0cc]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+                <span id="services-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">رعاية متكاملة وموثوقة</span>
+                <h3 id="services-title" class="text-2xl sm:text-3xl font-black dyn-title">التخصصات والخدمات المتوفرة</h3>
+                <p id="services-subtitle" class="dyn-text opacity-80 text-xs sm:text-sm">اختر الخدمة المطلوبة لحجز موعدك أو الاستفسار مباشرة عبر واتساب</p>
+            </div>
+            <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- 6. PHOTO GALLERY WITH FULLSCREEN ZOOM -->
+    <section id="gallery" class="py-14 sm:py-20 bg-white border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
+                <div>
+                    <span id="gallery-top-tag" class="text-xs font-extrabold dyn-accent-text">جولة داخل المركز</span>
+                    <h3 id="gallery-title" class="text-2xl sm:text-3xl font-black dyn-title mt-1">معرض الصور الحقيقية</h3>
+                </div>
+                <span id="gallery-zoom-hint" class="text-xs font-bold dyn-accent-text bg-[#f7f4ec] px-3.5 py-2 rounded-lg border border-[#e8e0cc] flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i> اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها
+                </span>
+            </div>
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- 7. CUSTOMER REVIEWS SECTION -->
+    <section id="reviews" class="py-14 sm:py-20 bg-[#faf8f2] border-b border-[#e8e0cc]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/25 text-xs font-bold">
+                    <i class="fa-brands fa-google"></i>
+                    <span id="reviews-badge">تقييمات العملاء الموثقة على Google Maps</span>
+                </div>
+                <h3 id="reviews-title" class="text-2xl sm:text-3xl font-black dyn-title">ماذا يقول عملاؤنا عنا؟</h3>
+            </div>
+            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- 8. LIVE INTERACTIVE GOOGLE MAP -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="rounded-2xl overflow-hidden shadow-lg border border-[#e8e0cc] h-72 sm:h-96 w-full">
+            <iframe id="live-google-map" class="w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-[#232621] text-stone-300 text-center text-xs">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div id="footer-copy" class="font-bold"></div>
+            <a href="#booking" id="footer-map-link" target="_blank" class="hover:underline text-emerald-400 flex items-center gap-1.5 font-bold">
+                <i class="fa-solid fa-map-location-dot"></i> <span id="footer-map-text">فتح الموقع في Google Maps</span>
+            </a>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button on Bottom-Left -->
+    <a href="#booking" class="dyn-wa-btn fixed bottom-5 left-5 z-40 px-4 py-3 rounded-full font-extrabold text-xs sm:text-sm shadow-2xl flex items-center gap-2 border-2 border-white transition transform hover:scale-105">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        <span id="floating-wa-label">تواصل وحجز</span>
+    </a>
+
+    <!-- ===================================================================== -->
+    <!-- 🧠 9. SINGLE-FILE EASY CONFIGURATION & IMAGE DIMENSIONS GUIDE         -->
+    <!-- ===================================================================== -->
+    <script>
+        /*
+         * =========================================================================================
+         * 📏 IMAGE DIMENSIONS GUIDE (Ma9asat L-Logo w L-Cover ila bghiti t-sawbhom b AI aw Canva):
+         * =========================================================================================
+         * 1. Custom Logo (customLogoUrl):
+         *    - Dimensions: 400 x 120 px (Transparent PNG or SVG).
+         *    - How to use: Put the image filename or URL inside customLogoUrl below (e.g. "logo.png").
+         *
+         * 2. Main Cover Image (heroImg):
+         *    - Dimensions: 1400 x 900 px (Landscape 16:10 HD).
+         *
+         * 3. Secondary Right Cover Image (coverRightImg):
+         *    - Dimensions: 1200 x 900 px (4:3 HD).
+         *
+         * 4. Gallery Photos (gallery):
+         *    - Dimensions: 1000 x 750 px each.
+         * =========================================================================================
+         */
+        /*__START_SITE_CONFIG__*/
+        let SITE_CONFIG = {
+        "activeNiche": "medical",
+        "activeLang": "ar",
+        "showDemoBar": false,
+        "whatsappNumber": "966555903322",
+        "googleMapsUrl": "https://www.google.com/maps/place/%D9%85%D8%AC%D9%85%D8%B9+%D8%A3%D8%B1%D8%B6+%D8%A7%D9%84%D8%AE%D8%B2%D8%A7%D9%85%D9%89+%D8%A7%D9%84%D8%B7%D8%A8%D9%8A+-+Lavender+Land+Complex%E2%80%AD/data=!4m7!3m6!1s0x3e3511b1722c2a4d:0xa365d119615e4b7c!8m2!3d27.1454696!4d49.5656889!16s%2Fg%2F11wnchbf7h!19sChIJTSoscrERNT4RfEteYRnRZaM?authuser=0&hl=ar&g_ep=EgoyMDI2MTEwMi4wIJJjKgBIAVAD&rclk=1",
+        "rating": "4.5",
+        "reviewsCount": "256",
+        "logoStyle": 5,
+        "themeColors": {
+                "titleColor": "#4c1d95",
+                "textColor": "#1f2937",
+                "accentColor": "#6d28d9",
+                "whatsappBtnColor": "#059669"
+        },
+        "customClientData": {
+                "businessName": "مجمع أرض الخزامى الطبي -",
+                "englishBrand": "LAVENDER LAND",
+                "customLogoUrl": "",
+                "heroTitle": "طبيب أسنان في الجبيل — رعاية طبية واستشارية متكاملة بأحدث التقنيات",
+                "heroDesc": "في مجمع أرض الخزامى الطبي - (الصناعيه، طريق الدمام، الفناتير، امام فندق كران - خلف مطعم اوت باك، الجبيل 35814، المملكة العربية السعودية)، نقدم خدمات استشارة طبية وفحص شامل، العناية بصحة الفم والأسنان، تجميل الأسنان والتركيبات بأعلى معايير الجودة والاحترافية. لحجز موعد أو الاستفسار، استخدم النموذج أدناه لنتواصل معك فوراً عبر واتساب.",
+                "city": "الصناعيه، طريق الدمام، الفناتير، امام فندق كران - خلف مطعم اوت باك، الجبيل 35814، المملكة العربية السعودية",
+                "hours": "السبت - الخميس: 10ص إلى 9م (الجمعة مغلق)",
+                "heroImg": "https://lh3.googleusercontent.com/grass-cs/AABkmLeL-r13zTd6XxRm43e7GLXlhEGkUqqjC6Bh7WhbNrCiOTscRTkUvpXEOiMLuBgN3XMpLQsVMEnuRzv7Y_Cc-9CHF1_DeAq2sWl4f-P_nmgrQoRLFRUdfE88_ttQ8G8LHCqYcFg=w1400-h1000-k-no",
+                "coverRightImg": "",
+                "gallery": [
+                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TRCecauwC_66qxZrPX-qKwHfvGEXu0QVs8SnTVZg1DCiiwmP9Itd5nnoK2czECx1Z-wncekSQnHxr5LLPGP1iDxrO9XUTQMpAz0cl8DGxo7Um54jTeN4GNOl-3_bj27wf06Po=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9SI2y6SDhd6WZdKpRXCkCIklPBEagvvZVdDrf33rPr91_qdCy9mfJQpMJ1bBUrqvIn0m_78fZ2hJ8sGkU57UnZVpw6OfA_Z5nqOBq9wrn18dm_lLdRPnLNyyuTXFxfid46qV5c_B0MYBlo=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLfVCkZEzrhzd8ELaGMIBCBiqs-PBcf7Tfj40zwg5zEnHvZRDjJf2gDGHSrKLshFXlqD96ZCUKWDj9eiUeq_yR8jhan3Sw_QicKbeaTp6YjFrq5h-k3AKeC7Iowqn8x394PW4aQqO-zzVsNY=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLd_7dj8y4N19S-KCSPVGr-B_mgO-1-Oh5--dwjI9LfkVgBiXqhGt2fkG2aeRSdQNg3OHSXXMF76oK3eA2QbEvytyY0mQs-Zf1QKUyh7w1FVvAjpBksm_kROJ7E1wcu5jdzZujo=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLdzIo9y9V5MBok8R3q3CA3hjeLq8qQMJSDFizgaftvK5X9iLOFntchvLCyQYKD9gVtz99zceS8ioYlnu090G3jKGg9rd3NZzFkXxwrHVLv7tdZoOLKVvoi6Z24PUxWOzu0ioTiaiw=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLdW_iOaRCVHM2Yx6U8tgSF_3q54TUfvDJCIHh48gIzO6qpC1XWzCrgLb4eLIWTijurHb-Otk-n1wWCBdVJdIp7mtmTAkM3onsruys26L0Vq7-bt6ACgfGoD6EWc4APGqu6byTS4fg=w1400-h1000-k-no"
+                ],
+                "services": [
+                        {
+                                "icon": "fa-solid fa-stethoscope",
+                                "title": "استشارة طبية وفحص شامل",
+                                "desc": "تشخيص دقيق وشامل لحالتك مع وضع خطة علاجية واضحة تناسب احتياجاتك."
+                        },
+                        {
+                                "icon": "fa-solid fa-tooth",
+                                "title": "العناية بصحة الفم والأسنان",
+                                "desc": "جلسات تنظيف الأسنان والعناية الدورية والوقائية بأحدث الأجهزة الطبية."
+                        },
+                        {
+                                "icon": "fa-solid fa-wand-magic-sparkles",
+                                "title": "تجميل الأسنان والتركيبات",
+                                "desc": "تصميم الابتسامة والتركيبات الثابتة بمظهر طبيعي متناسق."
+                        },
+                        {
+                                "icon": "fa-solid fa-calendar-check",
+                                "title": "حجز موعد فوري ومباشر",
+                                "desc": "احجز موعدك بسهولة عبر واتساب في الوقت الذي يناسبك بدون انتظار."
+                        }
+                ],
+                "reviews": [
+                        {
+                                "name": "NK",
+                                "text": "عيادة متميزة من ناحية التنظيم والنظافة، وكل شيء مرتب بشكل احترافي. الضيافة والاهتمام بالمراجعين يعطي انطباع حلو من اول زياره. وجينا خصيصًا للدكتور مصعب لما سمعنا عنه سمعه طيبة وثقة كبيرة بين الناس، والعيادة لها دور كبير في استقطاب كفاءات عا"
+                        },
+                        {
+                                "name": "",
+                                "text": "عيادة متميزة من ناحية التنظيم والنظافة، وكل شيء مرتب بشكل احترافي. الضيافة والاهتمام بالمراجعين يعطي انطباع حلو من اول زياره. وجينا خصيصًا للدكتور مصعب لما سمعنا عنه سمعه طيبة وثقة كبيرة بين الناس، والعيادة لها دور كبير في استقطاب كفاءات عا"
+                        },
+                        {
+                                "name": "Besaan Me",
+                                "text": "تحية شكر وتقدير للدكتور المبدع محمد عابدون 🌟أمانة، وإتقان يفوق الوصف، ويدٌ ماهرة  ماشاء الله .اللهم ارزقه رزقاً وفيراً، وبارك في عمره وصحته، وأصلح له زوجته وأبناءه، واحفظ له كل من يحب. … المزيد"
+                        }
+                ]
+        }
+};
+        /*__END_SITE_CONFIG__*/
+
+        const UI_TRANSLATIONS = {
+            ar: {
+                navHome: "الصفحة الرئيسية",
+                navBook: "احجز الآن",
+                navServices: "الخدمات والتخصصات",
+                navGallery: "معرض الصور",
+                navReviews: "آراء العملاء",
+                navCta: "احجز موعدك الآن",
+                coverBadge: "نستقبل الحجوزات والاستفسارات مباشرة عبر واتساب",
+                zoomLabel: "تكبير الصورة كاملة",
+                bookingTopTag: "اتصل بنا واحجز موعدك",
+                bookingMainHeading: "احجز موعدك اليوم",
+                lblAddr: "العنوان:",
+                lblPhone: "الهاتف والواتساب المباشر:",
+                lblHours: "ساعات العمل:",
+                lblRating: "التقييم العام في خرائط جوجل:",
+                lblReviewsWord: "مراجعة وتقييم موثق",
+                formHeading: "راسلنا واحجز موعدك فوراً",
+                formBadge: "تأكيد فوري",
+                lblName: "الاسم الكريم *",
+                phName: "أدخل اسمك الكامل...",
+                lblService: "الخدمة أو التخصص المطلوب *",
+                lblTime: "الوقت المفضل للزيارة *",
+                times: ["اليوم في أقرب وقت", "غداً صباحاً", "غداً مساءً", "خلال هذا الأسبوع", "استفسار عن الأسعار"],
+                generalServiceOpt: "استشارة عامة / حجز موعد",
+                lblNotes: "الرسالة أو الملاحظات (اختياري)",
+                phNotes: "اكتب أي استفسار أو تفاصيل تود إضافتها...",
+                submitBtn: "إرسال الطلب وتأكيد الموعد عبر واتساب",
+                servicesTopTag: "رعاية متكاملة وموثوقة",
+                servicesTitle: "التخصصات والخدمات المتوفرة",
+                servicesSub: "اختر الخدمة المطلوبة لحجز موعدك أو الاستفسار مباشرة عبر واتساب",
+                serviceCardBtn: "احجز الخدمة عبر واتساب",
+                galleryTopTag: "جولة داخل المركز",
+                galleryTitle: "معرض الصور الحقيقية",
+                galleryZoomHint: "اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها",
+                reviewsBadge: "تقييمات العملاء الموثقة على Google Maps",
+                reviewsTitle: "ماذا يقول عملاؤنا عنا؟",
+                verifiedClient: "✔ عميل موثق في Google Maps",
+                footerMap: "فتح الموقع في Google Maps",
+                floatingWa: "تواصل وحجز",
+                rights: "جميع الحقوق محفوظة."
+            },
+            en: {
+                navHome: "Home",
+                navBook: "Book Now",
+                navServices: "Services & Specialties",
+                navGallery: "Photo Gallery",
+                navReviews: "Client Reviews",
+                navCta: "Book on WhatsApp",
+                coverBadge: "Instant Online Booking & Inquiries via WhatsApp",
+                zoomLabel: "Tap to Zoom Full Photo",
+                bookingTopTag: "DIRECT ONLINE DESK",
+                bookingMainHeading: "Book Your Appointment Today",
+                lblAddr: "Location Address:",
+                lblPhone: "Direct Phone & WhatsApp:",
+                lblHours: "Working Hours:",
+                lblRating: "Verified Google Maps Rating:",
+                lblReviewsWord: "Verified Client Reviews",
+                formHeading: "Send Your Booking Request via WhatsApp",
+                formBadge: "Instant Confirmation",
+                lblName: "Your Full Name *",
+                phName: "Enter your full name...",
+                lblService: "Select Desired Service *",
+                lblTime: "Preferred Time *",
+                times: ["Today (As soon as possible)", "Tomorrow Morning", "Tomorrow Afternoon", "Later This Week", "Price / General Inquiry"],
+                generalServiceOpt: "General Consultation / Inquiry",
+                lblNotes: "Additional Notes (Optional)",
+                phNotes: "Any specific questions or details...",
+                submitBtn: "Confirm & Send Request on WhatsApp",
+                servicesTopTag: "PREMIUM CARE & EXCELLENCE",
+                servicesTitle: "Our Specialized Services",
+                servicesSub: "Select any service below to inquire or book directly via WhatsApp",
+                serviceCardBtn: "Book via WhatsApp",
+                galleryTopTag: "INSIDE OUR FACILITY",
+                galleryTitle: "Verified Photo Gallery",
+                galleryZoomHint: "Click or tap any photo to view full screen & zoom",
+                reviewsBadge: "Verified Google Maps Reviews",
+                reviewsTitle: "What Our Clients Say",
+                verifiedClient: "✔ Verified Google Maps Client",
+                footerMap: "Open Location in Google Maps",
+                floatingWa: "Chat & Book",
+                rights: "All Rights Reserved."
+            }
+        };
+
+        const NICHE_PRESETS = {
+            medical: {
+                heroImg: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1400&q=85",
+                gallery: [
+                    "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80"
+                ],
+                ar: {
+                    businessName: "مركز بيرلا لطب الأسنان",
+                    englishBrand: "PERLA DENTAL",
+                    city: "السالمية - الكويت",
+                    hours: "السبت - الخميس: 9:00 صباحاً - 9:00 مساءً",
+                    heroTitle: "رعاية أسنان فائقة الجودة • زراعة وتجميل وتقويم الأسنان",
+                    heroDesc: "صحة فمك وراحتك هما أولويتنا القصوى. لحجز موعد، استخدم النموذج أدناه وتواصل معنا وابدأ الخطوة الأولى نحو ابتسامة أكثر إشراقاً وصحة!",
+                    services: [
+                        { icon: "fa-solid fa-tooth", title: "زراعة وجراحة الأسنان", desc: "تعويض الأسنان المفقودة بأحدث تقنيات الزراعة الرقمية المريحة وبدون ألم." },
+                        { icon: "fa-solid fa-wand-magic-sparkles", title: "تجميل الأسنان والتركيبات", desc: "تصميم الابتسامة والتركيبات الخزفية الثابتة بمظهر طبيعي متناسق." },
+                        { icon: "fa-solid fa-face-smile", title: "تقويم الأسنان والشفاف", desc: "تعديل اصطفاف الأسنان للأطفال والكبار بأحدث أنظمة التقويم الحديثة." },
+                        { icon: "fa-solid fa-stethoscope", title: "علاج العصب والفحص الشامل", desc: "فحص شامل، تنظيف اللثة وإزالة الجير، وعلاج الجذور بأحدث الأجهزة." }
+                    ],
+                    reviews: [
+                        { name: "عبدالله العتيبي", text: "تجربة فوق الممتازة! الاستقبال راقي جداً والدكتور يده خفيفة ما حسيت بأي ألم. أنصح بهم وبقوة." },
+                        { name: "سارة الدوسري", text: "النتيجة خيالية وطبيعية جداً، شكراً لكل طاقم العيادة على الاحترافية والاهتمام بأدق التفاصيل." },
+                        { name: "فهد القحطاني", text: "من أفضل العيادات من ناحية النظافة والالتزام بالمواعيد والأسعار المناسبة." }
+                    ]
+                },
+                en: {
+                    businessName: "Apex Dental & Medical Clinic",
+                    englishBrand: "APEX DENTAL",
+                    city: "London - UK",
+                    hours: "Mon - Sat: 9:00 AM - 7:00 PM",
+                    heroTitle: "Specialist Dental Implants, Cosmetics & Oral Surgery",
+                    heroDesc: "Combining specialist clinical care with state-of-the-art 3D dental technology for painless, lasting results.",
+                    services: [
+                        { icon: "fa-solid fa-tooth", title: "Dental Implants & Oral Surgery", desc: "Guided dental implants and specialist oral surgery with zero discomfort." },
+                        { icon: "fa-solid fa-wand-magic-sparkles", title: "Cosmetic Dentistry & Veneers", desc: "Bespoke porcelain veneers, crowns, and professional laser whitening." },
+                        { icon: "fa-solid fa-face-smile", title: "Invisalign & Orthodontics", desc: "Discreet clear aligners and modern orthodontic treatments for all ages." },
+                        { icon: "fa-solid fa-stethoscope", title: "Comprehensive Checkup & Hygiene", desc: "Full diagnostic consultation, painless root canal, and periodontal care." }
+                    ],
+                    reviews: [
+                        { name: "James Anderson", text: "Hands down the best dental experience I have ever had. Painless and super friendly team!" },
+                        { name: "Sophie Laurent", text: "Spotless clinic, very honest specialist, and wonderful results. Highly recommended." },
+                        { name: "David Miller", text: "Punctual appointments and transparent pricing. Five-star care." }
+                    ]
+                }
+            },
+            auto: {
+                heroImg: "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1400&q=85",
+                gallery: [
+                    "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1507136566006-cfc505b114fc?auto=format&fit=crop&w=1000&q=80"
+                ],
+                ar: {
+                    businessName: "رويال شيلد للعناية بالسيارات",
+                    englishBrand: "ROYAL SHIELD",
+                    city: "جدة - السعودية",
+                    hours: "يومياً: 10:00 صباحاً - 11:00 مساءً",
+                    heroTitle: "مركز متخصص في أفلام الحماية PPF والنانو سيراميك والعزل الحراري",
+                    heroDesc: "نحمي سيارتك ونعيد لها لمعة الوكالة بأجود المواد الأصلية المعتمدة مع ضمان رسمي موثق.",
+                    services: [
+                        { icon: "fa-solid fa-shield-halved", title: "أفلام الحماية الشفافة PPF", desc: "حماية كاملة لطلاء السيارة من الخدوش والترميل بخاصية المعالجة الذاتية." },
+                        { icon: "fa-solid fa-gem", title: "نانو سيراميك داخلي وخارجي", desc: "طبقات حماية كريستالية تمنح السيارة لمعاناً فائقاً وحماية من العوامل الجوية." },
+                        { icon: "fa-solid fa-sun-plant-wilt", title: "تظليل وعزل حراري للزجاج", desc: "عزل حراري نانو سيراميك يحجب الحرارة والأشعة الضارة بنسبة تصل إلى 99%." },
+                        { icon: "fa-solid fa-spray-can-sparkles", title: "تلميع ساطع وغسيل تفصيلي", desc: "تلميع ومعالجة الخدوش السطحية وتنظيف داخلي عميق يعيد السيارة كالجديدة." }
+                    ],
+                    reviews: [
+                        { name: "سلطان الغامدي", text: "ركبت عندهم حماية PPF، الشغل نظيف جداً والقص إلكتروني بالملي ما يبان أبداً." },
+                        { name: "محمد الحربي", text: "التلميع والنانو سيراميك عندهم رجع سيارتي كأنها طالعة من الوكالة اليوم." },
+                        { name: "خالد الزهراني", text: "تعامل راقي والتزام بوقت التسليم، وأسعارهم ممتازة مقارنة بالجودة." }
+                    ]
+                },
+                en: {
+                    businessName: "Royal Shield Auto Detailing",
+                    englishBrand: "ROYAL SHIELD",
+                    city: "Miami - USA",
+                    hours: "Daily: 9:00 AM - 8:00 PM",
+                    heroTitle: "Specialist Paint Protection Film (PPF), Ceramic Coating & Detailing",
+                    heroDesc: "Preserve your vehicle's showroom finish with self-healing PPF and multi-layer ceramic protection.",
+                    services: [
+                        { icon: "fa-solid fa-shield-halved", title: "Self-Healing PPF Protection", desc: "Full-body invisible armor against rock chips and road scratches." },
+                        { icon: "fa-solid fa-gem", title: "9H Nano-Ceramic Coating", desc: "Hydrophobic mirror gloss and UV protection for paint, wheels, and trim." },
+                        { icon: "fa-solid fa-sun-plant-wilt", title: "Ceramic Window Tinting", desc: "Maximum cabin heat rejection with crystal-clear optical visibility." },
+                        { icon: "fa-solid fa-spray-can-sparkles", title: "Paint Correction & Detailing", desc: "Multi-stage machine polishing and deep interior leather restoration." }
+                    ],
+                    reviews: [
+                        { name: "Marcus Vance", text: "Seamless edges, zero bubbles, true perfectionists!" },
+                        { name: "Liam O'Connor", text: "Superb customer service and honest pricing. My car looks brand new." },
+                        { name: "Daniel Weber", text: "Best detailing studio in town. Highly recommended." }
+                    ]
+                }
+            },
+            food: {
+                heroImg: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1400&q=85",
+                gallery: [
+                    "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                ],
+                ar: {
+                    businessName: "مطعم ولاونج السرايا",
+                    englishBrand: "AL SARAYA",
+                    city: "الدمام - السعودية",
+                    hours: "يومياً: 12:30 ظهراً - 1:00 ص",
+                    heroTitle: "أشهى المشويات والأطباق الطازجة مع جلسات عائلية راقية وخدمة توصيل",
+                    heroDesc: "نقدم لكم تجربة طعام استثنائية محضرة يومياً من أجود المكونات الطازجة. احجز طاولتك أو اطلب التوصيل المباشر.",
+                    services: [
+                        { icon: "fa-solid fa-fire-burner", title: "الطلب المباشر من المنيو", desc: "اطلب وجبتك المفضلة مباشرة عبر واتساب لتصلك ساخنة وبأفضل سعر." },
+                        { icon: "fa-solid fa-chair", title: "حجز طاولة / جلسة عائلية", desc: "احجز طاولتك مسبقاً للأفراد أو العائلات لضمان أفضل مكان." },
+                        { icon: "fa-solid fa-champagne-glasses", title: "تجهيز الحفلات والولائم", desc: "تلبية طلبات المناسبات الخاصة، البوفيهات، والولائم العائلية." },
+                        { icon: "fa-solid fa-motorcycle", title: "خدمة التوصيل السريع", desc: "توصيل سريع ومباشر من المطعم إلى باب منزلك أو مكتبك." }
+                    ],
+                    reviews: [
+                        { name: "تركي الشمري", text: "الأكل لذيذ بشكل لا يوصف، والجلسات هادئة والخدمة سريعة جداً." },
+                        { name: "نورة السبيعي", text: "طلبت منهم لمناسبة عائلية، الترتيب والطعم فوق الخيال." },
+                        { name: "فيصل العلي", text: "النظافة والاستقبال والأسعار كلها 10 على 10." }
+                    ]
+                },
+                en: {
+                    businessName: "Ember & Olive Fine Dining",
+                    englishBrand: "EMBER OLIVE",
+                    city: "London - UK",
+                    hours: "Daily: 12:00 PM - 11:30 PM",
+                    heroTitle: "Authentic Wood-Fired Grills, Family Dining & Private Events",
+                    heroDesc: "Experience freshly prepared signature dishes and warm hospitality. Reserve your table or order direct delivery below.",
+                    services: [
+                        { icon: "fa-solid fa-fire-burner", title: "Direct Menu Ordering", desc: "Order your favorite dishes directly via WhatsApp with zero platform fees." },
+                        { icon: "fa-solid fa-chair", title: "Table & VIP Lounge Booking", desc: "Reserve your table in advance for family dinners or business gatherings." },
+                        { icon: "fa-solid fa-champagne-glasses", title: "Event & Party Catering", desc: "Custom catering packages for private gatherings and corporate events." },
+                        { icon: "fa-solid fa-motorcycle", title: "Priority Fast Delivery", desc: "Hot, fresh delivery straight from our kitchen to your doorstep." }
+                    ],
+                    reviews: [
+                        { name: "Elena Rostova", text: "Incredible ambiance and delicious food. A must-visit!" },
+                        { name: "Hannah Wright", text: "Seamless WhatsApp reservation and amazing hospitality." },
+                        { name: "Oliver Grant", text: "Fresh ingredients, generous portions, and great service." }
+                    ]
+                }
+            },
+            service: {
+                heroImg: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=85",
+                gallery: [
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80",
+                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80"
+                ],
+                ar: {
+                    businessName: "أركان للتصميم والمقاولات",
+                    englishBrand: "ARKAN DESIGN",
+                    city: "الرياض - السعودية",
+                    hours: "السبت - الخميس: 8:30 صباحاً - 9:00 مساءً",
+                    heroTitle: "تصميم داخلي عصري، تشطيب متكامل، وتنفيذ مشاريع سكنية وتجارية",
+                    heroDesc: "نحول مساحتك إلى تحفة معمارية بأعلى معايير الجودة والالتزام التام بالمواعيد.",
+                    services: [
+                        { icon: "fa-solid fa-cubes", title: "التصميم الداخلي والمخططات 3D", desc: "تصاميم ثلاثية الأبعاد احترافية تتيح لك رؤية مشروعك قبل التنفيذ." },
+                        { icon: "fa-solid fa-trowel-bricks", title: "أعمال التشطيب والديكور", desc: "تنفيذ كافة أعمال الديكور، الأرضيات، الإضاءة، والدهانات الحديثة." },
+                        { icon: "fa-solid fa-building", title: "تجهيز المكاتب والمحلات", desc: "تنفيذ الهوية المكانية للشركات، الكافيهات، والمعارض التجارية." },
+                        { icon: "fa-solid fa-clipboard-check", title: "طلب معاينة وعرض سعر", desc: "زيارة ميدانية وتقديم دراسة تكلفة واضحة ومفصلة لمشروعك." }
+                    ],
+                    reviews: [
+                        { name: "المهندس ماجد الشهري", text: "دقة عجيبة في المواعيد والتنفيذ طابق التصميم بنسبة 100%." },
+                        { name: "عبدالرحمن السديري", text: "أفكارهم إبداعية جداً ووفروا علي مبالغ كبيرة في التنفيذ." },
+                        { name: "أميرة الفهد", text: "فريق عمل محترف وأمين، أنصح بالتعامل معهم." }
+                    ]
+                },
+                en: {
+                    businessName: "Vanguard Interior Design & Fit-Out",
+                    englishBrand: "VANGUARD DESIGN",
+                    city: "London - UK",
+                    hours: "Mon - Sat: 8:30 AM - 6:30 PM",
+                    heroTitle: "Bespoke Interior Architecture, Turnkey Renovation & Commercial Fit-Out",
+                    heroDesc: "Transforming residential and commercial spaces with photorealistic 3D design and on-time turnkey execution.",
+                    services: [
+                        { icon: "fa-solid fa-cubes", title: "3D Interior Visualization", desc: "Photorealistic 3D renders and space planning tailored to your property." },
+                        { icon: "fa-solid fa-trowel-bricks", title: "Turnkey Renovation", desc: "Complete fit-out, flooring, custom joinery, and architectural lighting." },
+                        { icon: "fa-solid fa-building", title: "Commercial & Office Fit-Out", desc: "High-impact workspaces, retail stores, and hospitality interiors." },
+                        { icon: "fa-solid fa-clipboard-check", title: "Free Site Survey & Quote", desc: "Book an on-site consultation and detailed quotation via WhatsApp." }
+                    ],
+                    reviews: [
+                        { name: "Jonathan Sterling", text: "Delivered our project ahead of schedule with exceptional craftsmanship!" },
+                        { name: "Claire Dubois", text: "The actual renovation matched every single detail of the 3D design." },
+                        { name: "Carlos Mendez", text: "Transparent pricing and outstanding communication." }
+                    ]
+                }
+            }
+        };
+
+        function buildCustomSvgLogo(arName, enBrand, nicheKey, styleNum, accentColor, customLogoUrl) {
+            if (customLogoUrl && customLogoUrl.trim() !== "") {
+                return `<img src="${customLogoUrl.trim()}" alt="${arName}" class="h-12 sm:h-16 w-auto max-w-[220px] object-contain">`;
+            }
+
+            const cleanEn = (enBrand || "ROYAL CLINIC").toUpperCase();
+            const words = cleanEn.split(/\s+/);
+            const firstWord = words[0] || "ROYAL";
+            const secondWord = words.slice(1).join(" ") || (nicheKey === "medical" ? "DENTAL" : nicheKey === "auto" ? "MOTORS" : nicheKey === "food" ? "LOUNGE" : "GROUP");
+            const initial = firstWord.charAt(0) || "R";
+            const color = accentColor || "#a68a3d";
+            const s = Number(styleNum) || 1;
+
+            if (s === 1) {
+                return `
+                    <div class="flex flex-col items-start leading-none">
+                        <div class="flex items-center gap-1.5 font-logo text-base sm:text-xl font-extrabold tracking-wider">
+                            <span class="text-slate-900">${firstWord}</span>
+                            <span style="color:${color}">${secondWord}</span>
+                        </div>
+                        <svg class="w-full h-3.5 -mt-0.5" viewBox="0 0 180 18" fill="none">
+                            <path d="M2 14 C 25 2, 45 17, 70 6 C 95 -2, 130 12, 178 8" stroke="${color}" stroke-width="2.2" stroke-linecap="round"/>
+                            <path d="M40 16 L 178 16" stroke="#232621" stroke-width="1" stroke-opacity="0.25"/>
+                        </svg>
+                        <span class="font-ar text-[11px] sm:text-xs font-extrabold text-slate-700 tracking-tight -mt-0.5">${arName}</span>
+                    </div>
+                `;
+            }
+            if (s === 2) {
+                return `
+                    <div class="flex items-center gap-2.5">
+                        <svg class="w-11 h-11 shrink-0" viewBox="0 0 48 48" fill="none">
+                            <polygon points="24,3 43,13.5 43,34.5 24,45 5,34.5 5,13.5" stroke="${color}" stroke-width="2.2" fill="${color}" fill-opacity="0.08"/>
+                            <polygon points="24,7 39,15.5 39,32.5 24,41 9,32.5 9,15.5" stroke="${color}" stroke-width="1" stroke-dasharray="3 2"/>
+                            <text x="24" y="30" text-anchor="middle" fill="${color}" font-family="Cinzel, serif" font-weight="800" font-size="18">${initial}</text>
+                        </svg>
+                        <div class="flex flex-col items-start leading-tight">
+                            <div class="font-logo text-sm sm:text-lg font-extrabold tracking-widest text-slate-900">${firstWord} <span style="color:${color}">${secondWord}</span></div>
+                            <span class="font-ar text-[11px] sm:text-xs font-bold text-slate-600">${arName}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            if (s === 3) {
+                return `
+                    <div class="flex items-center gap-2.5">
+                        <svg class="w-10 h-10 shrink-0" viewBox="0 0 44 44" fill="none">
+                            <rect x="22" y="4" width="25" height="25" rx="3" transform="rotate(45 22 4)" stroke="${color}" stroke-width="2.2" fill="${color}" fill-opacity="0.1"/>
+                            <circle cx="22" cy="22" r="5" fill="${color}"/>
+                        </svg>
+                        <div class="border-l-2 pl-2.5 flex flex-col items-start leading-tight" style="border-color:${color}">
+                            <div class="font-logo text-sm sm:text-lg font-black tracking-wider text-slate-900">${firstWord} <span style="color:${color}">${secondWord}</span></div>
+                            <span class="font-ar text-[11px] sm:text-xs font-extrabold text-slate-700">${arName}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            if (s === 4) {
+                return `
+                    <div class="flex flex-col items-start leading-none">
+                        <div class="flex items-center gap-1.5">
+                            <span class="px-2 py-0.5 rounded text-white font-logo text-xs sm:text-sm font-extrabold tracking-widest" style="background-color:${color}">${firstWord}</span>
+                            <span class="font-logo text-sm sm:text-lg font-extrabold tracking-wider text-slate-900">${secondWord}</span>
+                        </div>
+                        <div class="w-full h-[1.5px] my-1" style="background: linear-gradient(90deg, ${color}, transparent)"></div>
+                        <span class="font-ar text-[11px] sm:text-xs font-extrabold text-slate-700">${arName}</span>
+                    </div>
+                `;
+            }
+            if (s === 5) {
+                return `
+                    <div class="flex items-center gap-2">
+                        <svg class="w-9 h-9 shrink-0" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 2 L24 16 L38 20 L24 24 L20 38 L16 24 L2 20 L16 16 Z" stroke="${color}" stroke-width="2" fill="${color}" fill-opacity="0.15"/>
+                            <circle cx="20" cy="20" r="2.5" fill="#1e293b"/>
+                        </svg>
+                        <div class="flex flex-col items-start leading-none">
+                            <div class="font-logo text-sm sm:text-lg font-extrabold tracking-wider">
+                                <span style="color:${color}">${firstWord}</span> <span class="text-slate-900">${secondWord}</span>
+                            </div>
+                            <span class="font-ar text-[11px] sm:text-xs font-bold text-slate-700 mt-1">${arName}</span>
+                        </div>
+                    </div>
+                `;
+            }
+            return `
+                <div class="flex items-center gap-2.5">
+                    <svg class="w-10 h-10 shrink-0" viewBox="0 0 44 44" fill="none">
+                        <circle cx="22" cy="22" r="19" stroke="${color}" stroke-width="2"/>
+                        <circle cx="22" cy="22" r="15" stroke="${color}" stroke-width="1" stroke-opacity="0.5"/>
+                        <text x="22" y="27" text-anchor="middle" fill="${color}" font-family="Cinzel, serif" font-weight="800" font-size="16">${initial}</text>
+                    </svg>
+                    <div class="flex flex-col items-start leading-tight">
+                        <div class="font-logo text-sm sm:text-lg font-extrabold tracking-wider text-slate-900">${firstWord} <span style="color:${color}">${secondWord}</span></div>
+                        <span class="font-ar text-[11px] sm:text-xs font-extrabold text-slate-600">${arName}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        let LIGHTBOX_IMAGES = [];
+        let currentSlideIndex = 0;
+        let currentScale = 1, translateX = 0, translateY = 0;
+        let isDragging = false, startX = 0, startY = 0;
+        let initialPinchDistance = null, initialScale = 1;
+
+        function updateLightboxTransform() {
+            const img = document.getElementById("lightbox-img");
+            if (img) img.style.transform = `translate3d(${translateX}px, ${translateY}px, 0) scale(${currentScale})`;
+        }
+        function resetLightboxZoom() { currentScale = 1; translateX = 0; translateY = 0; updateLightboxTransform(); }
+        function zoomLightbox(delta) {
+            currentScale = Math.min(Math.max(1, currentScale + delta), 4);
+            if (currentScale === 1) { translateX = 0; translateY = 0; }
+            updateLightboxTransform();
+        }
+        function openLightbox(index) {
+            if (!LIGHTBOX_IMAGES.length) return;
+            currentSlideIndex = (index + LIGHTBOX_IMAGES.length) % LIGHTBOX_IMAGES.length;
+            resetLightboxZoom();
+            const modal = document.getElementById("lightbox-modal");
+            document.getElementById("lightbox-img").src = LIGHTBOX_IMAGES[currentSlideIndex];
+            document.getElementById("lightbox-counter").innerText = `${currentSlideIndex + 1} / ${LIGHTBOX_IMAGES.length}`;
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        }
+        function closeLightbox() {
+            const modal = document.getElementById("lightbox-modal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+        function changeLightboxSlide(step) { openLightbox(currentSlideIndex + step); }
+
+        function setupLightboxTouchGestures() {
+            const stage = document.getElementById("lightbox-stage");
+            const img = document.getElementById("lightbox-img");
+            if (!stage || !img) return;
+
+            let lastTap = 0;
+            img.addEventListener("touchend", (e) => {
+                const now = Date.now();
+                if (now - lastTap < 300 && e.touches.length === 0) {
+                    e.preventDefault();
+                    if (currentScale > 1.2) resetLightboxZoom();
+                    else { currentScale = 2.4; updateLightboxTransform(); }
+                }
+                lastTap = now;
+            });
+            img.addEventListener("dblclick", () => {
+                if (currentScale > 1.2) resetLightboxZoom();
+                else { currentScale = 2.4; updateLightboxTransform(); }
+            });
+            stage.addEventListener("touchstart", (e) => {
+                if (e.touches.length === 2) {
+                    initialPinchDistance = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+                    initialScale = currentScale;
+                } else if (e.touches.length === 1 && currentScale > 1) {
+                    isDragging = true;
+                    startX = e.touches[0].pageX - translateX;
+                    startY = e.touches[0].pageY - translateY;
+                }
+            }, { passive: true });
+            stage.addEventListener("touchmove", (e) => {
+                if (e.touches.length === 2 && initialPinchDistance) {
+                    e.preventDefault();
+                    const dist = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+                    currentScale = Math.min(Math.max(1, initialScale * (dist / initialPinchDistance)), 4.5);
+                    updateLightboxTransform();
+                } else if (e.touches.length === 1 && isDragging && currentScale > 1) {
+                    e.preventDefault();
+                    translateX = e.touches[0].pageX - startX;
+                    translateY = e.touches[0].pageY - startY;
+                    updateLightboxTransform();
+                }
+            }, { passive: false });
+            stage.addEventListener("touchend", () => {
+                initialPinchDistance = null;
+                isDragging = false;
+                if (currentScale <= 1.05) resetLightboxZoom();
+            });
+            stage.addEventListener("wheel", (e) => {
+                e.preventDefault();
+                zoomLightbox(e.deltaY < 0 ? 0.25 : -0.25);
+            }, { passive: false });
+        }
+
+        function applyCustomThemeColors() {
+            const tc = SITE_CONFIG.themeColors || {};
+            const root = document.documentElement;
+            if (tc.titleColor) root.style.setProperty("--title-color", tc.titleColor);
+            if (tc.textColor) root.style.setProperty("--text-color", tc.textColor);
+            if (tc.accentColor) root.style.setProperty("--accent-color", tc.accentColor);
+            if (tc.whatsappBtnColor) root.style.setProperty("--wa-btn-color", tc.whatsappBtnColor);
+        }
+
+        function renderSite() {
+            applyCustomThemeColors();
+
+            const nicheKey = SITE_CONFIG.activeNiche || "medical";
+            const langKey = (SITE_CONFIG.activeLang === "en") ? "en" : "ar";
+            const ui = UI_TRANSLATIONS[langKey];
+            const preset = NICHE_PRESETS[nicheKey] || NICHE_PRESETS.medical;
+            const content = JSON.parse(JSON.stringify(preset[langKey] || preset.ar));
+
+            document.getElementById("html-root").lang = langKey;
+            document.getElementById("html-root").dir = (langKey === "en") ? "ltr" : "rtl";
+            document.getElementById("body-root").className = (langKey === "en") ? "font-en antialiased" : "font-ar antialiased";
+
+            let activeHeroImg = preset.heroImg;
+            let activeCoverRightImg = "";
+            let customLogoUrl = "";
+            let activeGallery = [...preset.gallery];
+            let enBrand = content.englishBrand || "ROYAL CENTER";
+
+            if (SITE_CONFIG.customClientData) {
+                const cd = SITE_CONFIG.customClientData;
+                if (cd.businessName) content.businessName = cd.businessName;
+                if (cd.englishBrand) enBrand = cd.englishBrand;
+                if (cd.customLogoUrl) customLogoUrl = cd.customLogoUrl;
+                if (cd.heroTitle) content.heroTitle = cd.heroTitle;
+                if (cd.heroDesc) content.heroDesc = cd.heroDesc;
+                if (cd.city) content.city = cd.city;
+                if (cd.hours) content.hours = cd.hours;
+                if (cd.heroImg) activeHeroImg = cd.heroImg;
+                if (cd.coverRightImg) activeCoverRightImg = cd.coverRightImg;
+
+                if (cd.gallery && cd.gallery.length > 0) {
+                    let combinedGal = [];
+                    for (let gImg of cd.gallery) {
+                        if (gImg !== activeHeroImg && !combinedGal.includes(gImg)) combinedGal.push(gImg);
+                    }
+                    for (let defImg of preset.gallery) {
+                        if (combinedGal.length >= 3) break;
+                        if (defImg !== activeHeroImg && !combinedGal.includes(defImg)) combinedGal.push(defImg);
+                    }
+                    activeGallery = combinedGal;
+                } else {
+                    activeGallery = preset.gallery.filter(img => img !== activeHeroImg);
+                }
+
+                if (cd.services && Array.isArray(cd.services) && cd.services.length > 0) {
+                    content.services = cd.services;
+                }
+                if (cd.reviews && Array.isArray(cd.reviews) && cd.reviews.length > 0) {
+                    for (let i = 0; i < Math.min(cd.reviews.length, 3); i++) {
+                        content.reviews[i] = cd.reviews[i];
+                    }
+                }
+            }
+
+            LIGHTBOX_IMAGES = [activeHeroImg, ...activeGallery.filter(u => u !== activeHeroImg)];
+
+            document.getElementById("page-title").innerText = `${content.businessName} | ${content.city}`;
+            document.getElementById("top-rating").innerText = SITE_CONFIG.rating;
+            document.getElementById("top-map-link").href = SITE_CONFIG.googleMapsUrl;
+            document.getElementById("top-welcome-ticker").innerText = langKey === "en"
+                ? `✹ Welcome to ${content.businessName} (${content.city}) ✹ ${content.hours} ✹ Book Online Today via WhatsApp!`
+                : `✹ أهلاً بكم في ${content.businessName} (${content.city}) ✹ ${content.hours} ✹ احجز موعدك اليوم عبر واتساب!`;
+
+            // Translate UI labels
+            document.getElementById("nav-home").innerText = ui.navHome;
+            document.getElementById("nav-book").innerText = ui.navBook;
+            document.getElementById("nav-services").innerText = ui.navServices;
+            document.getElementById("nav-gallery").innerText = ui.navGallery;
+            document.getElementById("nav-reviews").innerText = ui.navReviews;
+            document.getElementById("nav-cta-text").innerText = ui.navCta;
+            document.getElementById("cover-badge").innerText = ui.coverBadge;
+            document.getElementById("mobile-zoom-label").innerText = ui.zoomLabel;
+            document.getElementById("desktop-zoom-label").innerText = ui.zoomLabel;
+            document.getElementById("booking-top-tag").innerText = ui.bookingTopTag;
+            document.getElementById("booking-main-heading").innerText = ui.bookingMainHeading;
+            document.getElementById("lbl-addr-title").innerText = ui.lblAddr;
+            document.getElementById("lbl-phone-title").innerText = ui.lblPhone;
+            document.getElementById("lbl-hours-title").innerText = ui.lblHours;
+            document.getElementById("lbl-rating-title").innerText = ui.lblRating;
+            document.getElementById("lbl-reviews-word").innerText = ui.lblReviewsWord;
+            document.getElementById("form-heading").innerText = ui.formHeading;
+            document.getElementById("form-badge").innerText = ui.formBadge;
+            document.getElementById("label-name").innerText = ui.lblName;
+            document.getElementById("input-name").placeholder = ui.phName;
+            document.getElementById("label-service").innerText = ui.lblService;
+            document.getElementById("label-time").innerText = ui.lblTime;
+            document.getElementById("label-notes").innerText = ui.lblNotes;
+            document.getElementById("input-notes").placeholder = ui.phNotes;
+            document.getElementById("submit-btn-text").innerText = ui.submitBtn;
+            document.getElementById("services-top-tag").innerText = ui.servicesTopTag;
+            document.getElementById("services-title").innerText = ui.servicesTitle;
+            document.getElementById("services-subtitle").innerText = ui.servicesSub;
+            document.getElementById("gallery-top-tag").innerText = ui.galleryTopTag;
+            document.getElementById("gallery-title").innerText = ui.galleryTitle;
+            document.getElementById(" reviews-badge") && (document.getElementById("reviews-badge").innerText = ui.reviewsBadge);
+            document.getElementById("reviews-title").innerText = ui.reviewsTitle;
+            document.getElementById("footer-map-text").innerText = ui.footerMap;
+            document.getElementById("floating-wa-label").innerText = ui.floatingWa;
+
+            const activeAccent = (SITE_CONFIG.themeColors && SITE_CONFIG.themeColors.accentColor) || "#a68a3d";
+            const activeLogoStyle = SITE_CONFIG.logoStyle || 1;
+            document.getElementById("custom-svg-logo").innerHTML = buildCustomSvgLogo(
+                content.businessName, enBrand, nicheKey, activeLogoStyle, activeAccent, customLogoUrl
+            );
+
+            document.getElementById("hero-title").innerText = content.heroTitle;
+            document.getElementById("cover-Sub-breadcrumb").innerText = `${content.businessName}  ›  ${content.city}`;
+            document.getElementById("cover-img-left").src = activeHeroImg;
+            document.getElementById("cover-img-right").src = activeCoverRightImg || activeGallery[0] || activeHeroImg;
+            document.getElementById("mobile-hero-img").src = activeHeroImg;
+
+            document.getElementById("hero-desc").innerText = content.heroDesc;
+            document.getElementById("booking-address").innerText = content.city;
+            document.getElementById("booking-phone").innerText = `+${SITE_CONFIG.whatsappNumber}`;
+            document.getElementById("booking-hours").innerText = content.hours;
+            document.getElementById("stat-rating").innerText = `${SITE_CONFIG.rating} ⭐`;
+            document.getElementById("stat-reviews").innerText = `+${SITE_CONFIG.reviewsCount}`;
+
+            const servicesGrid = document.getElementById("services-grid");
+            const serviceSelect = document.getElementById("input-service");
+            servicesGrid.innerHTML = "";
+            serviceSelect.innerHTML = "";
+
+            content.services.forEach(srv => {
+                const card = document.createElement("div");
+                card.className = "royal-card p-6 rounded-2xl flex flex-col justify-between";
+                card.innerHTML = `
+                    <div>
+                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl mb-4 shadow-sm">
+                            <i class="${srv.icon || 'fa-solid fa-star'}"></i>
+                        </div>
+                        <h4 class="text-base sm:text-lg font-black mb-2 dyn-title">${srv.title}</h4>
+                        <p class="text-xs sm:text-sm dyn-text opacity-85 leading-relaxed mb-6">${srv.desc}</p>
+                    </div>
+                    <button onclick="quickSelectService('${srv.title.replace(/'/g, "\\'")}')" class="dyn-wa-btn w-full py-2.5 px-4 rounded-xl text-xs font-extrabold transition flex items-center justify-center gap-2 shadow-sm">
+                        <i class="fa-brands fa-whatsapp text-sm"></i>
+                        <span>${ui.serviceCardBtn}</span>
+                    </button>
+                `;
+                servicesGrid.appendChild(card);
+
+                const opt = document.createElement("option");
+                opt.value = srv.title;
+                opt.innerText = srv.title;
+                serviceSelect.appendChild(opt);
+            });
+
+            const genOpt = document.createElement("option");
+            genOpt.value = ui.generalServiceOpt;
+            genOpt.innerText = genOpt.value;
+            serviceSelect.appendChild(genOpt);
+
+            const timeSelect = document.getElementById("input-time");
+            timeSelect.innerHTML = "";
+            ui.times.forEach(t => {
+                const opt = document.createElement("option");
+                opt.value = t;
+                opt.innerText = t;
+                timeSelect.appendChild(opt);
+            });
+
+            const galleryGrid = document.getElementById("gallery-grid");
+            galleryGrid.innerHTML = "";
+            activeGallery.forEach((imgUrl, idx) => {
+                const lbIndex = idx + 1;
+                const imgBox = document.createElement("div");
+                imgBox.className = "royal-card relative rounded-2xl overflow-hidden aspect-[4/3] group cursor-pointer";
+                imgBox.onclick = () => openLightbox(lbIndex);
+                imgBox.innerHTML = `
+                    <img src="${imgUrl}" alt="Gallery Photo" referrerpolicy="no-referrer" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.parentElement.style.display='none'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition"></div>
+                    <div class="absolute bottom-3 right-3 left-3 flex items-center justify-between text-white text-xs font-bold">
+                        <span class="bg-black/65 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 flex items-center gap-1.5">
+                            <i class="fa-solid fa-magnifying-glass-plus text-emerald-400"></i>
+                            <span>${ui.zoomLabel}</span>
+                        </span>
+                    </div>
+                `;
+                galleryGrid.appendChild(imgBox);
+            });
+
+            const reviewsGrid = document.getElementById("reviews-grid");
+            reviewsGrid.innerHTML = "";
+            content.reviews.forEach(rev => {
+                const rCard = document.createElement("div");
+                rCard.className = "royal-card p-6 rounded-2xl flex flex-col justify-between space-y-4";
+                rCard.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-500 text-xs sm:text-sm gap-0.5">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <i class="fa-brands fa-google text-stone-400"></i>
+                        </div>
+                        <p class="text-xs sm:text-sm leading-relaxed dyn-text font-medium">"${rev.text}"</p>
+                    </div>
+                    <div class="flex items-center gap-3 pt-3 border-t border-stone-200/80">
+                        <div class="w-9 h-9 rounded-full dyn-accent-bg text-white font-black flex items-center justify-center text-sm shrink-0">
+                            ${rev.name.charAt(0)}
+                        </div>
+                        <div class="truncate">
+                            <div class="text-xs sm:text-sm font-extrabold dyn-title truncate">${rev.name}</div>
+                            <div class="text-[11px] text-emerald-700 font-bold">${ui.verifiedClient}</div>
+                        </div>
+                    </div>
+                `;
+                reviewsGrid.appendChild(rCard);
+            });
+
+            const mapQuery = encodeURIComponent(`${content.businessName} ${content.city}`);
+            document.getElementById("live-google-map").src = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+            document.getElementById("footer-copy").innerText = `© ${new Date().getFullYear()} ${content.businessName} - ${ui.rights}`;
+            document.getElementById("footer-map-link").href = SITE_CONFIG.googleMapsUrl;
+        }
+
+        function quickSelectService(serviceTitle) {
+            document.getElementById("input-service").value = serviceTitle;
+            document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("input-name").focus();
+        }
+
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const langKey = (SITE_CONFIG.activeLang === "en") ? "en" : "ar";
+            const name = document.getElementById("input-name").value.trim();
+            const service = document.getElementById("input-service").value;
+            const time = document.getElementById("input-time").value;
+            const notes = document.getElementById("input-notes").value.trim();
+            const bizName = (SITE_CONFIG.customClientData && SITE_CONFIG.customClientData.businessName) || "Center";
+
+            let msg = "";
+            if (langKey === "en") {
+                msg = `Hello *${bizName}* 👋\n\nI would like to book an appointment / service via your website:\n• *Name:* ${name}\n• *Service:* ${service}\n• *Preferred Time:* ${time}`;
+                if (notes) msg += `\n• *Notes:* ${notes}`;
+            } else {
+                msg = `مرحباً *${bizName}* 👋\n\nأود حجز موعد / طلب خدمة من خلال موقعكم الإلكتروني:\n• *الاسم:* ${name}\n• *الخدمة المطلوبة:* ${service}\n• *الوقت المفضل:* ${time}`;
+                if (notes) msg += `\n• *ملاحظات:* ${notes}`;
+            }
+
+            window.open(`https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            renderSite();
+            setupLightboxTouchGestures();
+        });
+    </script>
+</body>
+</html>
