@@ -45,16 +45,6 @@
             transform: translateY(-2px);
         }
 
-        iframe[src*="netlify"],
-        div[class*="netlify"],
-        a[href*="netlify.com"],
-        [data-netlify-deploy-badge] {
-            display: none !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            visibility: hidden !important;
-        }
-
         .luxury-cover-bg {
             background: radial-gradient(circle at center, var(--cover-bg-start) 0%, var(--cover-bg-mid) 65%, var(--cover-bg-end) 100%);
         }
@@ -131,17 +121,17 @@
         </div>
     </div>
 
-    <!-- 2. HEADER WITH LOGO FLUSH ON THE FAR LEFT (3LISER GA3) ON BOTH MOBILE & PC -->
+    <!-- 2. HEADER WITH LOGO FLUSH ON THE FAR LEFT (3LISER GA3) -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 min-h-[4.5rem] sm:min-h-[5.5rem] py-2.5 flex items-center justify-between gap-3">
 
-            <!-- Right Side Group (Navigation Links on Desktop + Green CTA Button) -->
+            <!-- Right Side Group (Dynamic Navigation Links + CTA Button) -->
             <div class="flex items-center gap-4 lg:gap-7 shrink-0">
-                <nav class="hidden lg:flex items-center gap-6 text-sm font-bold dyn-text shrink-0">
+                <nav id="dynamic-nav-links" class="hidden lg:flex items-center gap-6 text-sm font-bold dyn-text shrink-0">
                     <a href="#cover-section" id="nav-home" class="dyn-accent-text hover:opacity-80 transition font-extrabold">الصفحة الرئيسية</a>
-                    <a href="#booking" id="nav-book" class="hover:opacity-75 transition">احجز الآن</a>
-                    <a href="#services" id="nav-services" class="hover:opacity-75 transition">الخدمات والتخصصات</a>
                     <a href="#gallery" id="nav-gallery" class="hover:opacity-75 transition">معرض الصور</a>
+                    <a href="#services" id="nav-services" class="hover:opacity-75 transition">الخدمات</a>
+                    <a href="#booking" id="nav-book" class="hover:opacity-75 transition">احجز الآن</a>
                     <a href="#reviews" id="nav-reviews" class="hover:opacity-75 transition">آراء العملاء</a>
                 </nav>
 
@@ -156,7 +146,7 @@
                 </div>
             </div>
 
-            <!-- Far Left Side (3liser ga3): Logo aligned cleanly to the left edge on both PC & Mobile -->
+            <!-- Far Left Side: Logo -->
             <a href="#cover-section" class="flex items-center justify-start shrink-0 select-none overflow-hidden" dir="ltr">
                 <div id="custom-svg-logo" class="flex items-center"></div>
             </a>
@@ -167,24 +157,36 @@
     <!-- 3. WIDE LUXURY COVER BANNER -->
     <section id="cover-section" class="relative w-full luxury-cover-bg border-b border-stone-200/80 overflow-hidden">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 items-center min-h-[240px] sm:min-h-[310px]">
-                <div class="hidden lg:block lg:col-span-3 h-[310px] relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-center min-h-[240px] sm:min-h-[320px]">
+                <div class="hidden lg:block lg:col-span-3 h-[320px] relative overflow-hidden cursor-pointer" onclick="openLightbox(1)">
                     <img id="cover-img-right" src="" alt="Cover Visual" referrerpolicy="no-referrer" class="w-full h-full object-cover object-center">
                     <div class="absolute inset-0 bg-gradient-to-l from-transparent via-white/40 to-white/90"></div>
                 </div>
 
-                <div class="lg:col-span-6 py-8 sm:py-12 px-4 sm:px-8 text-center space-y-3 z-10">
+                <div class="lg:col-span-6 py-8 sm:py-12 px-4 sm:px-8 text-center space-y-3.5 z-10">
                     <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/90 dyn-accent-text border border-stone-200 text-[11px] sm:text-xs font-extrabold shadow-sm">
                         <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping"></span>
-                        <span id="cover-badge">نستقبل الحجوزات والاستفسارات مباشرة عبر واتساب</span>
+                        <span id="cover-badge">نستقبل الحجوزات والطلبات مباشرة عبر واتساب</span>
                     </div>
 
                     <h2 id="hero-title" class="text-xl sm:text-3xl md:text-4xl font-black dyn-title leading-snug"></h2>
                     <p id="cover-Sub-breadcrumb" class="text-xs sm:text-sm font-bold dyn-text opacity-80 pt-1 leading-relaxed"></p>
 
+                    <!-- Quick Action Buttons inside Cover (Tailored per Niche) -->
+                    <div id="cover-quick-btns" class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+                        <a href="#gallery" id="hero-btn-primary" class="dyn-accent-bg text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold shadow-sm hover:opacity-90 transition flex items-center gap-1.5">
+                            <i class="fa-regular fa-images"></i>
+                            <span id="hero-btn-primary-txt">تصفح الصور والأعمال</span>
+                        </a>
+                        <a href="#booking" id="hero-btn-secondary" class="bg-white/90 hover:bg-white dyn-title border border-stone-300 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold shadow-sm transition flex items-center gap-1.5">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            <span id="hero-btn-secondary-txt">تواصل واحجز الآن</span>
+                        </a>
+                    </div>
+
                     <div class="lg:hidden pt-3">
                         <div onclick="openLightbox(0)" class="relative rounded-2xl overflow-hidden shadow-md border border-stone-300 aspect-[16/10] max-w-md mx-auto cursor-pointer group">
-                            <img id="mobile-hero-img" src="" alt="Clinic Photo" referrerpolicy="no-referrer" class="w-full h-full object-cover">
+                            <img id="mobile-hero-img" src="" alt="Main Photo" referrerpolicy="no-referrer" class="w-full h-full object-cover">
                             <div class="absolute bottom-2.5 left-2.5 bg-black/70 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
                                 <i class="fa-solid fa-expand text-emerald-400"></i>
                                 <span id="mobile-zoom-label">تكبير الصورة كاملة</span>
@@ -193,7 +195,7 @@
                     </div>
                 </div>
 
-                <div class="hidden lg:block lg:col-span-3 h-[310px] relative overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
+                <div class="hidden lg:block lg:col-span-3 h-[320px] relative overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
                     <img id="cover-img-left" src="" alt="Showcase" referrerpolicy="no-referrer" class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500">
                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-white/90"></div>
                     <div class="absolute bottom-3 left-3 bg-black/65 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
@@ -205,142 +207,155 @@
         </div>
     </section>
 
-    <!-- 4. TWO-COLUMN BOOKING & CONTACT SECTION -->
-    <section id="booking" class="py-12 sm:py-16 bg-white border-b border-stone-200/80">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mb-10 space-y-2">
-                <span id="booking-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">اتصل بنا واحجز موعدك</span>
-                <h3 id="booking-main-heading" class="text-2xl sm:text-3xl font-black dyn-title">احجز موعدك اليوم</h3>
-                <p id="hero-desc" class="text-sm sm:text-base dyn-text opacity-85 leading-relaxed font-medium"></p>
+    <!-- ===================================================================== -->
+    <!-- 🔄 DYNAMIC MAIN CONTAINER (Reorders Sections Automatically per Niche) -->
+    <!-- ===================================================================== -->
+    <main id="dynamic-sections-container" class="flex flex-col">
+
+        <!-- SECTION A: PHOTO GALLERY WITH FULLSCREEN ZOOM (First for Food, Auto, Service!) -->
+        <section id="gallery" class="py-12 sm:py-16 bg-white border-b border-stone-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-3">
+                    <div>
+                        <span id="gallery-top-tag" class="text-xs font-extrabold dyn-accent-text">جولة مصورة</span>
+                        <h3 id="gallery-title" class="text-2xl sm:text-3xl font-black dyn-title mt-1">معرض الصور الحقيقية</h3>
+                    </div>
+                    <span id="gallery-zoom-hint" class="text-xs font-bold dyn-accent-text dyn-alt-bg px-3.5 py-2 rounded-lg border border-stone-200 flex items-center gap-1.5 w-fit">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها
+                    </span>
+                </div>
+                <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
             </div>
+        </section>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                <div class="lg:col-span-5 space-y-6 order-2 lg:order-1 dyn-alt-bg p-6 sm:p-8 rounded-2xl border border-stone-200/80">
-                    <div class="flex items-start gap-4">
-                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            <i class="fa-solid fa-location-dot"></i>
-                        </div>
-                        <div>
-                            <h4 id="lbl-addr-title" class="font-extrabold text-sm sm:text-base dyn-title">العنوان:</h4>
-                            <p id="booking-address" class="text-xs sm:text-sm dyn-text opacity-85 mt-1 leading-relaxed font-medium"></p>
-                        </div>
-                    </div>
+        <!-- SECTION B: REAL SERVICES / MENU / PACKAGES SECTION -->
+        <section id="services" class="py-12 sm:py-16 dyn-alt-bg border-b border-stone-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                    <span id="services-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">جودة واحترافية</span>
+                    <h3 id="services-title" class="text-2xl sm:text-3xl font-black dyn-title">الخدمات المتوفرة</h3>
+                    <p id="services-subtitle" class="dyn-text opacity-80 text-xs sm:text-sm">اختر من القائمة أدناه للطلب أو الحجز مباشرة عبر واتساب</p>
+                </div>
+                <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </div>
+        </section>
 
-                    <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
-                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            <i class="fa-solid fa-phone-volume"></i>
-                        </div>
-                        <div>
-                            <h4 id="lbl-phone-title" class="font-extrabold text-sm sm:text-base dyn-title">الهاتف والواتساب المباشر:</h4>
-                            <p id="booking-phone" class="text-sm sm:text-base dyn-accent-text font-black mt-1" dir="ltr"></p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
-                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            <i class="fa-regular fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4 id="lbl-hours-title" class="font-extrabold text-sm sm:text-base dyn-title">ساعات العمل:</h4>
-                            <p id="booking-hours" class="text-xs sm:text-sm dyn-text mt-1 font-bold leading-relaxed"></p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
-                        <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            <i class="fa-brands fa-google"></i>
-                        </div>
-                        <div>
-                            <h4 id="lbl-rating-title" class="font-extrabold text-sm sm:text-base dyn-title">التقييم العام في خرائط جوجل:</h4>
-                            <p class="text-xs sm:text-sm dyn-text mt-1 font-bold">
-                                <span id="stat-rating" class="text-amber-600 font-black">4.9 ⭐</span>
-                                (<span id="stat-reviews">+120</span> <span id="lbl-reviews-word">مراجعة وتقييم موثق</span>)
-                            </p>
-                        </div>
-                    </div>
+        <!-- SECTION C: NICHE-ADAPTIVE BOOKING / ORDERING / QUOTE SECTION -->
+        <section id="booking" class="py-12 sm:py-16 bg-white border-b border-stone-200/80">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mb-10 space-y-2">
+                    <span id="booking-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">تواصل مباشر وسريع</span>
+                    <h3 id="booking-main-heading" class="text-2xl sm:text-3xl font-black dyn-title">احجز أو اطلب الآن</h3>
+                    <p id="hero-desc" class="text-sm sm:text-base dyn-text opacity-85 leading-relaxed font-medium"></p>
                 </div>
 
-                <div class="lg:col-span-7 order-1 lg:order-2">
-                    <form onsubmit="sendToWhatsApp(event)" class="royal-card p-6 sm:p-8 rounded-2xl space-y-5">
-                        <div class="flex items-center justify-between border-b border-stone-100 pb-4">
-                            <h4 id="form-heading" class="text-lg sm:text-xl font-black dyn-title">راسلنا واحجز موعدك فوراً</h4>
-                            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
-                                <i class="fa-brands fa-whatsapp text-sm"></i> <span id="form-badge">تأكيد فوري</span>
-                            </span>
-                        </div>
-
-                        <div>
-                            <label id="label-name" class="block text-xs font-extrabold dyn-text mb-1.5">الاسم الكريم *</label>
-                            <input type="text" id="input-name" required placeholder="أدخل اسمك الكامل..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold">
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label id="label-service" class="block text-xs font-extrabold dyn-text mb-1.5">الخدمة أو التخصص المطلوب *</label>
-                                <select id="input-service" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    <div class="lg:col-span-5 space-y-6 order-2 lg:order-1 dyn-alt-bg p-6 sm:p-8 rounded-2xl border border-stone-200/80">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                                <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
-                                <label id="label-time" class="block text-xs font-extrabold dyn-text mb-1.5">الوقت المفضل للزيارة *</label>
-                                <select id="input-time" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                                <h4 id="lbl-addr-title" class="font-extrabold text-sm sm:text-base dyn-title">العنوان والموقع:</h4>
+                                <p id="booking-address" class="text-xs sm:text-sm dyn-text opacity-85 mt-1 leading-relaxed font-medium"></p>
                             </div>
                         </div>
 
-                        <div>
-                            <label id="label-notes" class="block text-xs font-extrabold dyn-text mb-1.5">الرسالة أو الملاحظات (اختياري)</label>
-                            <textarea id="input-notes" rows="3" placeholder="اكتب أي استفسار أو تفاصيل تود إضافتها..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></textarea>
+                        <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
+                            <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                                <i class="fa-solid fa-phone-volume"></i>
+                            </div>
+                            <div>
+                                <h4 id="lbl-phone-title" class="font-extrabold text-sm sm:text-base dyn-title">الهاتف والواتساب المباشر:</h4>
+                                <p id="booking-phone" class="text-sm sm:text-base dyn-accent-text font-black mt-1" dir="ltr"></p>
+                            </div>
                         </div>
 
-                        <button type="submit" class="dyn-wa-btn w-full py-4 px-6 rounded-xl font-black text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 transition duration-200">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            <span id="submit-btn-text">إرسال الطلب وتأكيد الموعد عبر واتساب</span>
-                        </button>
-                    </form>
+                        <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
+                            <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                                <i class="fa-regular fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 id="lbl-hours-title" class="font-extrabold text-sm sm:text-base dyn-title">أوقات العمل:</h4>
+                                <p id="booking-hours" class="text-xs sm:text-sm dyn-text mt-1 font-bold leading-relaxed"></p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4 pt-4 border-t border-stone-200/70">
+                            <div class="w-12 h-12 rounded-xl dyn-accent-bg text-white flex items-center justify-center text-xl shrink-0 shadow-sm">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <div>
+                                <h4 id="lbl-rating-title" class="font-extrabold text-sm sm:text-base dyn-title">التقييم العام في خرائط جوجل:</h4>
+                                <p class="text-xs sm:text-sm dyn-text mt-1 font-bold">
+                                    <span id="stat-rating" class="text-amber-600 font-black">4.9 ⭐</span>
+                                    (<span id="stat-reviews">+120</span> <span id="lbl-reviews-word">مراجعة وتقييم موثق</span>)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 order-1 lg:order-2">
+                        <form onsubmit="sendToWhatsApp(event)" class="royal-card p-6 sm:p-8 rounded-2xl space-y-4">
+                            <div class="flex items-center justify-between border-b border-stone-100 pb-4">
+                                <h4 id="form-heading" class="text-lg sm:text-xl font-black dyn-title">أرسل طلبك عبر واتساب فوراً</h4>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                                    <i class="fa-brands fa-whatsapp text-sm"></i> <span id="form-badge">رد فوري</span>
+                                </span>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label id="label-name" class="block text-xs font-extrabold dyn-text mb-1.5">الاسم الكريم *</label>
+                                    <input type="text" id="input-name" required placeholder="أدخل اسمك الكامل..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold">
+                                </div>
+                                <div>
+                                    <label id="label-extra" class="block text-xs font-extrabold dyn-text mb-1.5">التفصيل المطلوب *</label>
+                                    <select id="input-extra" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label id="label-service" class="block text-xs font-extrabold dyn-text mb-1.5">الخدمة المطلوبة *</label>
+                                    <select id="input-service" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                                </div>
+                                <div>
+                                    <label id="label-time" class="block text-xs font-extrabold dyn-text mb-1.5">الوقت المفضل *</label>
+                                    <select id="input-time" class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label id="label-notes" class="block text-xs font-extrabold dyn-text mb-1.5">الرسالة أو التفاصيل الإضافية (اختياري)</label>
+                                <textarea id="input-notes" rows="3" placeholder="اكتب أي تفاصيل تود إضافتها..." class="w-full px-4 py-3 rounded-lg bg-[#fcfbf9] text-slate-900 border border-stone-300 focus:outline-none focus:border-emerald-600 text-sm font-semibold"></textarea>
+                            </div>
+
+                            <button type="submit" class="dyn-wa-btn w-full py-4 px-6 rounded-xl font-black text-sm sm:text-base shadow-lg shadow-emerald-600/25 flex items-center justify-center gap-2.5 transition duration-200">
+                                <i class="fa-brands fa-whatsapp text-xl"></i>
+                                <span id="submit-btn-text">إرسال الطلب عبر واتساب</span>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. REAL SERVICES SECTION -->
-    <section id="services" class="py-14 sm:py-20 dyn-alt-bg border-b border-stone-200/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
-                <span id="services-top-tag" class="text-xs font-extrabold dyn-accent-text uppercase tracking-wider">رعاية متكاملة وموثوقة</span>
-                <h3 id="services-title" class="text-2xl sm:text-3xl font-black dyn-title">التخصصات والخدمات المتوفرة</h3>
-                <p id="services-subtitle" class="dyn-text opacity-80 text-xs sm:text-sm">اختر الخدمة المطلوبة لحجز موعدك أو الاستفسار مباشرة عبر واتساب</p>
-            </div>
-            <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-        </div>
-    </section>
-
-    <!-- 6. PHOTO GALLERY WITH FULLSCREEN ZOOM -->
-    <section id="gallery" class="py-14 sm:py-20 bg-white border-b border-stone-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-3">
-                <div>
-                    <span id="gallery-top-tag" class="text-xs font-extrabold dyn-accent-text">جولة داخل المركز</span>
-                    <h3 id="gallery-title" class="text-2xl sm:text-3xl font-black dyn-title mt-1">معرض الصور الحقيقية</h3>
+        <!-- SECTION D: CUSTOMER REVIEWS SECTION -->
+        <section id="reviews" class="py-12 sm:py-16 dyn-alt-bg border-b border-stone-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-10 space-y-2">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/25 text-xs font-bold">
+                        <i class="fa-brands fa-google"></i>
+                        <span id="reviews-badge">تقييمات العملاء الموثقة على Google Maps</span>
+                    </div>
+                    <h3 id="reviews-title" class="text-2xl sm:text-3xl font-black dyn-title">ماذا يقول عملاؤنا عنا؟</h3>
                 </div>
-                <span id="gallery-zoom-hint" class="text-xs font-bold dyn-accent-text dyn-alt-bg px-3.5 py-2 rounded-lg border border-stone-200 flex items-center gap-1.5">
-                    <i class="fa-solid fa-magnifying-glass-plus"></i> اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها
-                </span>
+                <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
             </div>
-            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 7. CUSTOMER REVIEWS SECTION -->
-    <section id="reviews" class="py-14 sm:py-20 dyn-alt-bg border-b border-stone-200/80">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12 space-y-2">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 text-amber-800 border border-amber-500/25 text-xs font-bold">
-                    <i class="fa-brands fa-google"></i>
-                    <span id="reviews-badge">تقييمات العملاء الموثقة على Google Maps</span>
-                </div>
-                <h3 id="reviews-title" class="text-2xl sm:text-3xl font-black dyn-title">ماذا يقول عملاؤنا عنا؟</h3>
-            </div>
-            <div id="reviews-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        </div>
-    </section>
+    </main>
 
     <!-- 8. LIVE INTERACTIVE GOOGLE MAP -->
     <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
@@ -366,19 +381,9 @@
     </a>
 
     <!-- ===================================================================== -->
-    <!-- 🧠 9. SINGLE-FILE EASY CONFIGURATION & IMAGE DIMENSIONS GUIDE         -->
+    <!-- 🧠 9. MULTI-NICHE CHAMELEON ENGINE (4 DISTINCT DESIGNS & FLOWS)       -->
     <!-- ===================================================================== -->
     <script>
-        /*
-         * =========================================================================================
-         * 📏 IMAGE DIMENSIONS GUIDE (Ma9asat L-Logo w L-Cover ila bghiti t-sawbhom b AI aw Canva):
-         * =========================================================================================
-         * 1. Custom Logo (customLogoUrl): 400 x 120 px (Transparent PNG or SVG).
-         * 2. Main Cover Image (heroImg): 1400 x 900 px (Landscape 16:10 HD).
-         * 3. Secondary Right Cover Image (coverRightImg): 1200 x 900 px (4:3 HD).
-         * 4. Gallery Photos (gallery): 1000 x 750 px each.
-         * =========================================================================================
-         */
         /*__START_SITE_CONFIG__*/
         let SITE_CONFIG = {
         "activeNiche": "food",
@@ -403,7 +408,7 @@
                 "businessName": "مقهى ومطعم ليالي الدوحه",
                 "englishBrand": "LAYALI AL DOHA",
                 "customLogoUrl": "",
-                "heroTitle": "مطعم في الدوحة بن محمود — مذاق استثنائي وأجواء راقية",
+                "heroTitle": "مطعم في الدوحة بن محمود —  صاف مزيان ىمذاق استثنائي وأجواء راقية",
                 "heroDesc": "في مقهى ومطعم ليالي الدوحه (7GHP+XFJ، الدوحة، قطر)، نقدم خدمات المأكولات البحرية الطازجة، حجز الطاولات والجلسات العائلية، تجهيز الولائم والمناسبات الخاصة بأعلى معايير الجودة والاحترافية. لحجز موعد أو الاستفسار، استخدم النموذج أدناه لنتواصل معك فوراً عبر واتساب.",
                 "city": "7GHP+XFJ، الدوحة، قطر",
                 "hours": "يومياً: نعمل على مدار 24 ساعة",
@@ -457,88 +462,451 @@
 };
         /*__END_SITE_CONFIG__*/
 
-        const UI_TRANSLATIONS = {
-            ar: {
-                navHome: "الصفحة الرئيسية",
-                navBook: "احجز الآن",
-                navServices: "الخدمات والتخصصات",
-                navGallery: "معرض الصور",
-                navReviews: "آراء العملاء",
-                navCta: "احجز الآن",
-                coverBadge: "نستقبل الحجوزات والاستفسارات مباشرة عبر واتساب",
-                zoomLabel: "تكبير الصورة كاملة",
-                bookingTopTag: "اتصل بنا واحجز موعدك",
-                bookingMainHeading: "احجز موعدك اليوم",
-                lblAddr: "العنوان:",
-                lblPhone: "الهاتف والواتساب المباشر:",
-                lblHours: "ساعات العمل:",
-                lblRating: "التقييم العام في خرائط جوجل:",
-                lblReviewsWord: "مراجعة وتقييم موثق",
-                formHeading: "راسلنا واحجز موعدك فوراً",
-                formBadge: "تأكيد فوري",
-                lblName: "الاسم الكريم *",
-                phName: "أدخل اسمك الكامل...",
-                lblService: "الخدمة أو التخصص المطلوب *",
-                lblTime: "الوقت المفضل للزيارة *",
-                times: ["اليوم في أقرب وقت", "غداً صباحاً", "غداً مساءً", "خلال هذا الأسبوع", "استفسار عن الأسعار"],
-                generalServiceOpt: "استشارة عامة / حجز موعد",
-                lblNotes: "الرسالة أو الملاحظات (اختياري)",
-                phNotes: "اكتب أي استفسار أو تفاصيل تود إضافتها...",
-                submitBtn: "إرسال الطلب وتأكيد الموعد عبر واتساب",
-                servicesTopTag: "رعاية متكاملة وموثوقة",
-                servicesTitle: "التخصصات والخدمات المتوفرة",
-                servicesSub: "اختر الخدمة المطلوبة لحجز موعدك أو الاستفسار مباشرة عبر واتساب",
-                serviceCardBtn: "احجز الخدمة عبر واتساب",
-                galleryTopTag: "جولة داخل المركز",
-                galleryTitle: "معرض الصور الحقيقية",
-                galleryZoomHint: "اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها",
-                reviewsBadge: "تقييمات العملاء الموثقة على Google Maps",
-                reviewsTitle: "ماذا يقول عملاؤنا عنا؟",
-                verifiedClient: "✔ عميل موثق في Google Maps",
-                footerMap: "فتح الموقع في Google Maps",
-                floatingWa: "تواصل وحجز",
-                rights: "جميع الحقوق محفوظة."
+        // 🎯 NICHE-SPECIFIC UI & FORM SCHEMAS (Food, Auto/Lavage, Service/Decor, Medical)
+        const NICHE_UI_PROFILES = {
+            food: {
+                sectionOrder: ["gallery", "services", "booking", "reviews"],
+                ar: {
+                    navHome: "الرئيسية",
+                    navGallery: "صور الأطباق والجلسات",
+                    navServices: "المنيو والأصناف",
+                    navBook: "حجز طاولة / طلب",
+                    navReviews: "آراء الزوار",
+                    navCta: "احجز طاولة / اطلب الآن",
+                    coverBadge: "نستقبل حجوزات الطاولات وطلبات التوصيل مباشرة عبر واتساب",
+                    heroBtnPrimary: "شاهد صور الأطباق والجلسات",
+                    heroBtnSecondary: "حجز طاولة / طلب توصيل",
+                    zoomLabel: "تكبير الصورة كاملة",
+                    galleryTopTag: "جولة في أجواء المطعم وأطباقنا",
+                    galleryTitle: "معرض صور الأطباق والجلسات الحقيقية",
+                    servicesTopTag: "مذاق استثنائي ومكونات طازجة يومياً",
+                    servicesTitle: "أبرز الأصناف وخدمات الضيافة",
+                    servicesSub: "اختر الصنف أو الخدمة للطلب المباشر أو حجز طاولتك عبر واتساب",
+                    serviceCardBtn: "اطلب أو احجز عبر واتساب",
+                    bookingTopTag: "حجز الطاولات والطلب المباشر بدون عمولة",
+                    bookingMainHeading: "احجز طاولتك أو اطلب وجبتك الآن",
+                    lblAddr: "موقع المطعم:",
+                    lblPhone: "هاتف الطلبات والحجز واتساب:",
+                    lblHours: "أوقات العمل والاستقبال:",
+                    lblRating: "تقييم الزوار في خرائط جوجل:",
+                    lblReviewsWord: "تقييم ومراجعة موثقة",
+                    formHeading: "حجز طاولة أو طلب توصيل سريع عبر واتساب",
+                    formBadge: "تأكيد فوري للطلب",
+                    lblName: "الاسم الكريم *",
+                    phName: "أدخل اسمك الكامل...",
+                    lblExtra: "نوع الحجز / عدد الأشخاص *",
+                    extraOptions: [
+                        "حجز طاولة (شخصين)",
+                        "حجز جلسة عائلية (4 - 6 أشخاص)",
+                        "حجز طاولة لمجموعة أو مناسبة خاصة",
+                        "طلب توصيل للمنزل (Delivery)",
+                        "طلب استلام من المطعم (Takeaway)"
+                    ],
+                    lblService: "القسم أو الطلب المفضل *",
+                    generalServiceOpt: "طلب من المنيو العام / حجز طاولة",
+                    lblTime: "وقت الحضور أو التوصيل *",
+                    times: ["الآن (في أسرع وقت)", "اليوم (وجبة الغداء)", "اليوم (وجبة العشاء)", "غداً", "نهاية الأسبوع"],
+                    lblNotes: "تفاصيل الطلب أو ملاحظات الجلسة (اختياري)",
+                    phNotes: "اكتب الأصناف المطلوبة أو أي ملاحظات خاصة بطاولتك...",
+                    submitBtn: "إرسال الطلب / تأكيد حجز الطاولة عبر واتساب",
+                    reviewsBadge: "تجارب الزوار الموثقة على Google Maps",
+                    reviewsTitle: "ماذا يقول زوارنا عن مذاقنا وضيافتنا؟",
+                    verifiedClient: "✔ زائر موثق في Google Maps",
+                    footerMap: "فتح موقع المطعم في Google Maps",
+                    floatingWa: "اطلب / احجز طاولة",
+                    rights: "جميع الحقوق محفوظة.",
+                    waIntro: "أود إرسال طلب / حجز طاولة من خلال موقعكم الإلكتروني:",
+                    waLblService: "الطلب أو القسم",
+                    waLblExtra: "نوع الحجز / العدد",
+                    waLblTime: "وقت الحضور أو التوصيل"
+                },
+                en: {
+                    navHome: "Home",
+                    navGallery: "Food & Ambiance Photos",
+                    navServices: "Menu & Dining",
+                    navBook: "Reserve Table / Order",
+                    navReviews: "Guest Reviews",
+                    navCta: "Book Table / Order",
+                    coverBadge: "Direct Table Reservations & Fast Delivery via WhatsApp",
+                    heroBtnPrimary: "View Food & Lounge Photos",
+                    heroBtnSecondary: "Reserve Table / Order Now",
+                    zoomLabel: "Tap to Zoom Photo",
+                    galleryTopTag: "EXPLORE OUR DISHES & AMBIANCE",
+                    galleryTitle: "Real Photos of Our Food & Lounge",
+                    servicesTopTag: "FRESH INGREDIENTS & SIGNATURE TASTE",
+                    servicesTitle: "Menu Highlights & Dining Services",
+                    servicesSub: "Select an option below to reserve a table or order directly via WhatsApp",
+                    serviceCardBtn: "Order / Reserve on WhatsApp",
+                    bookingTopTag: "DIRECT TABLE RESERVATION & DELIVERY",
+                    bookingMainHeading: "Reserve Your Table or Order Direct",
+                    lblAddr: "Restaurant Location:",
+                    lblPhone: "Direct Order & WhatsApp Line:",
+                    lblHours: "Opening Hours:",
+                    lblRating: "Google Maps Guest Rating:",
+                    lblReviewsWord: "Verified Guest Reviews",
+                    formHeading: "Table Reservation & Direct Order Desk",
+                    formBadge: "Instant Confirmation",
+                    lblName: "Your Full Name *",
+                    phName: "Enter your name...",
+                    lblExtra: "Order Type / Number of Guests *",
+                    extraOptions: [
+                        "Table Reservation (2 Guests)",
+                        "Family Table (4 - 6 Guests)",
+                        "Group / VIP Event Booking",
+                        "Home Delivery Order",
+                        "Takeaway / Pickup Order"
+                    ],
+                    lblService: "Preferred Menu Category *",
+                    generalServiceOpt: "Full Menu Order / Table Booking",
+                    lblTime: "Preferred Time *",
+                    times: ["Right Now (ASAP)", "Today (Lunch)", "Today (Dinner)", "Tomorrow", "This Weekend"],
+                    lblNotes: "Order Items or Special Requests (Optional)",
+                    phNotes: "Write your dish order or seating preferences...",
+                    submitBtn: "Confirm Table / Send Order via WhatsApp",
+                    reviewsBadge: "Verified Google Maps Guest Reviews",
+                    reviewsTitle: "What Our Guests Say About Us",
+                    verifiedClient: "✔ Verified Google Maps Guest",
+                    footerMap: "Open Restaurant in Google Maps",
+                    floatingWa: "Order / Book Table",
+                    rights: "All Rights Reserved.",
+                    waIntro: "I would like to reserve a table / place an order via your website:",
+                    waLblService: "Menu / Service",
+                    waLblExtra: "Booking Type / Guests",
+                    waLblTime: "Preferred Time"
+                }
             },
-            en: {
-                navHome: "Home",
-                navBook: "Book Now",
-                navServices: "Services & Specialties",
-                navGallery: "Photo Gallery",
-                navReviews: "Client Reviews",
-                navCta: "Book Now",
-                coverBadge: "Instant Online Booking & Inquiries via WhatsApp",
-                zoomLabel: "Tap to Zoom Full Photo",
-                bookingTopTag: "DIRECT ONLINE DESK",
-                bookingMainHeading: "Book Your Appointment Today",
-                lblAddr: "Location Address:",
-                lblPhone: "Direct Phone & WhatsApp:",
-                lblHours: "Working Hours:",
-                lblRating: "Verified Google Maps Rating:",
-                lblReviewsWord: "Verified Client Reviews",
-                formHeading: "Send Your Booking Request via WhatsApp",
-                formBadge: "Instant Confirmation",
-                lblName: "Your Full Name *",
-                phName: "Enter your full name...",
-                lblService: "Select Desired Service *",
-                lblTime: "Preferred Time *",
-                times: ["Today (As soon as possible)", "Tomorrow Morning", "Tomorrow Afternoon", "Later This Week", "Price / General Inquiry"],
-                generalServiceOpt: "General Consultation / Inquiry",
-                lblNotes: "Additional Notes (Optional)",
-                phNotes: "Any specific questions or details...",
-                submitBtn: "Confirm & Send Request on WhatsApp",
-                servicesTopTag: "PREMIUM CARE & EXCELLENCE",
-                servicesTitle: "Our Specialized Services",
-                servicesSub: "Select any service below to inquire or book directly via WhatsApp",
-                serviceCardBtn: "Book via WhatsApp",
-                galleryTopTag: "INSIDE OUR FACILITY",
-                galleryTitle: "Verified Photo Gallery",
-                galleryZoomHint: "Click or tap any photo to view full screen & zoom",
-                reviewsBadge: "Verified Google Maps Reviews",
-                reviewsTitle: "What Our Clients Say",
-                verifiedClient: "✔ Verified Google Maps Client",
-                footerMap: "Open Location in Google Maps",
-                floatingWa: "Chat & Book",
-                rights: "All Rights Reserved."
+            auto: {
+                sectionOrder: ["gallery", "services", "booking", "reviews"],
+                ar: {
+                    navHome: "الرئيسية",
+                    navGallery: "صور السيارات وأعمالنا",
+                    navServices: "باقات الغسيل والحماية",
+                    navBook: "احجز لسيارتك",
+                    navReviews: "تجارب العملاء",
+                    navCta: "احجز خدمة لسيارتك",
+                    coverBadge: "نستقبل حجوزات الغسيل التفصيلي، التلميع، وحماية السيارات عبر واتساب",
+                    heroBtnPrimary: "شاهد صور السيارات وأعمالنا",
+                    heroBtnSecondary: "احجز لسيارتك / اطلب السعر",
+                    zoomLabel: "تكبير الصورة كاملة",
+                    galleryTopTag: "نتائج حقيقية من داخل المركز",
+                    galleryTitle: "معرض صور السيارات وأعمال العناية",
+                    servicesTopTag: "عناية فائقة ولمعان وكالة مضمون",
+                    servicesTitle: "باقات الغسيل والتلميع والحماية المتوفرة",
+                    servicesSub: "اختر الباقة المناسبة لسيارتك للاستفسار عن السعر أو حجز موعدك عبر واتساب",
+                    serviceCardBtn: "احجز الباقة / اسأل عن السعر",
+                    bookingTopTag: "حجز سريع وعروض أسعار للسيارات",
+                    bookingMainHeading: "احجز موعداً لسيارتك أو استفسر عن الأسعار",
+                    lblAddr: "عنوان المركز:",
+                    lblPhone: "هاتف الحجز والواتساب المباشر:",
+                    lblHours: "أوقات استلام السيارات:",
+                    lblRating: "تقييم ملاك السيارات في جوجل:",
+                    lblReviewsWord: "تقييم ومراجعة موثقة",
+                    formHeading: "أرسل بيانات سيارتك للحجز أو معرفة التكلفة فوراً",
+                    formBadge: "رد وتسعير فوري",
+                    lblName: "الاسم الكريم *",
+                    phName: "أدخل اسمك الكامل...",
+                    lblExtra: "نوع وحجم السيارة *",
+                    extraOptions: [
+                        "سيارة سيدان (صغيرة / متوسطة)",
+                        "سيارة دفع رباعي كبير (SUV / جيب)",
+                        "سيارة رياضية / فارهة (كوبيه)",
+                        "سيارة عائلية / فان",
+                        "بيك أب / شاحنة خفيفة"
+                    ],
+                    lblService: "الخدمة أو الباقة المطلوبة للسيارة *",
+                    generalServiceOpt: "غسيل وعناية شاملة / استفسار عن الباقات",
+                    lblTime: "الوقت المفضل لتسليم السيارة *",
+                    times: ["اليوم في أقرب وقت", "غداً صباحاً", "غداً مساءً", "نهاية الأسبوع", "استفسار عن الأسعار والعروض فقط"],
+                    lblNotes: "موديل السيارة أو ملاحظات إضافية (اختياري)",
+                    phNotes: "اكتب نوع وموديل سيارتك أو أي استفسار...",
+                    submitBtn: "تأكيد حجز السيارة / طلب السعر عبر واتساب",
+                    reviewsBadge: "تقييمات ملاك السيارات على Google Maps",
+                    reviewsTitle: "ماذا يقول عملاؤنا عن جودة العناية بسياراتهم؟",
+                    verifiedClient: "✔ عميل موثق في Google Maps",
+                    footerMap: "فتح موقع المركز في Google Maps",
+                    floatingWa: "احجز لسيارتك",
+                    rights: "جميع الحقوق محفوظة.",
+                    waIntro: "أود حجز خدمة لسيارتي / الاستفسار عن الأسعار من خلال موقعكم:",
+                    waLblService: "الباقة المطلوبة",
+                    waLblExtra: "فئة وحجم السيارة",
+                    waLblTime: "الوقت المفضل"
+                },
+                en: {
+                    navHome: "Home",
+                    navGallery: "Our Car Portfolio",
+                    navServices: "Detailing & PPF Packages",
+                    navBook: "Book Your Car",
+                    navReviews: "Client Reviews",
+                    navCta: "Book Car Service",
+                    coverBadge: "Direct Car Detailing, Wash & PPF Booking via WhatsApp",
+                    heroBtnPrimary: "View Our Car Portfolio",
+                    heroBtnSecondary: "Get a Quote / Book Now",
+                    zoomLabel: "Tap to Zoom Photo",
+                    galleryTopTag: "REAL RESULTS FROM OUR STUDIO",
+                    galleryTitle: "Vehicle Showcase & Before/After Gallery",
+                    servicesTopTag: "SHOWROOM SHINE & CERTIFIED PROTECTION",
+                    servicesTitle: "Car Wash, Detailing & Protection Packages",
+                    servicesSub: "Select a package below to check pricing or book your vehicle slot via WhatsApp",
+                    serviceCardBtn: "Get Quote / Book on WhatsApp",
+                    bookingTopTag: "FAST VEHICLE BOOKING & QUOTES",
+                    bookingMainHeading: "Book a Slot or Request a Quote for Your Car",
+                    lblAddr: "Studio Location:",
+                    lblPhone: "Direct Booking & WhatsApp:",
+                    lblHours: "Working Hours:",
+                    lblRating: "Google Maps Rating:",
+                    lblReviewsWord: "Verified Car Owner Reviews",
+                    formHeading: "Send Your Vehicle Details for Instant Booking",
+                    formBadge: "Instant Quote",
+                    lblName: "Your Full Name *",
+                    phName: "Enter your full name...",
+                    lblExtra: "Vehicle Size / Type *",
+                    extraOptions: [
+                        "Sedan / Coupe (Standard)",
+                        "Mid-Size SUV / Crossover",
+                        "Full-Size SUV / 4x4 / Truck",
+                        "Sports / Exotic Supercar",
+                        "Van / Commercial Vehicle"
+                    ],
+                    lblService: "Desired Car Package *",
+                    generalServiceOpt: "Full Detailing / Price Inquiry",
+                    lblTime: "Preferred Drop-off Time *",
+                    times: ["Today (ASAP)", "Tomorrow Morning", "Tomorrow Afternoon", "This Weekend", "Price Inquiry Only"],
+                    lblNotes: "Car Make, Model & Year (Optional)",
+                    phNotes: "e.g., Porsche 911 / Range Rover 2025...",
+                    submitBtn: "Send Vehicle Booking / Quote Request on WhatsApp",
+                    reviewsBadge: "Verified Google Maps Reviews",
+                    reviewsTitle: "What Car Owners Say About Our Work",
+                    verifiedClient: "✔ Verified Google Maps Client",
+                    footerMap: "Open Studio Location in Google Maps",
+                    floatingWa: "Book Car Service",
+                    rights: "All Rights Reserved.",
+                    waIntro: "I would like to book a car service / request a quote via your website:",
+                    waLblService: "Selected Package",
+                    waLblExtra: "Vehicle Type",
+                    waLblTime: "Preferred Time"
+                }
+            },
+            service: {
+                sectionOrder: ["gallery", "services", "booking", "reviews"],
+                ar: {
+                    navHome: "الرئيسية",
+                    navGallery: "معرض المشاريع والأعمال",
+                    navServices: "خدماتنا الهندسية",
+                    navBook: "اطلب عرض سعر",
+                    navReviews: "آراء العملاء",
+                    navCta: "اطلب تسعيرة / معاينة",
+                    coverBadge: "نستقبل طلبات المعاينة الميدانية وعروض الأسعار مباشرة عبر واتساب",
+                    heroBtnPrimary: "شاهد صور مشاريعنا المنفذة",
+                    heroBtnSecondary: "اطلب عرض سعر / معاينة",
+                    zoomLabel: "تكبير الصورة كاملة",
+                    galleryTopTag: "نماذج حقيقية من أعمالنا على أرض الواقع",
+                    galleryTitle: "معرض الصور والمشاريع المنفذة",
+                    servicesTopTag: "إتقان في التنفيذ والتزام تام بالمواعيد",
+                    servicesTitle: "الخدمات الهندسية والتنفيذية المتوفرة",
+                    servicesSub: "اختر الخدمة المطلوبة لطلب دراسة تكلفة أو زيارة ميدانية عبر واتساب",
+                    serviceCardBtn: "اطلب تسعيرة عبر واتساب",
+                    bookingTopTag: "استشارة فنية ودراسة تكلفة المشروع",
+                    bookingMainHeading: "اطلب معاينة ميدانية أو عرض سعر لمشروعك",
+                    lblAddr: "عنوان المكتب / المقر:",
+                    lblPhone: "هاتف الإدارة والواتساب المباشر:",
+                    lblHours: "ساعات العمل الرسمية:",
+                    lblRating: "تقييم العملاء في خرائط جوجل:",
+                    lblReviewsWord: "تقييم ومراجعة موثقة",
+                    formHeading: "أرسل تفاصيل مشروعك للحصول على عرض سعر",
+                    formBadge: "رد مباشر من المختص",
+                    lblName: "الاسم الكريم *",
+                    phName: "أدخل اسمك الكامل...",
+                    lblExtra: "نوع العقار أو المشروع *",
+                    extraOptions: [
+                        "فيلا سكنية / قصر",
+                        "شقة سكنية / منزل",
+                        "مكتب شركة / مقر إداري",
+                        "محل تجاري / مطعم / كافيه",
+                        "حديقة خارجية / مسبح / مظلات"
+                    ],
+                    lblService: "الخدمة أو العمل المطلوب *",
+                    generalServiceOpt: "معاينة ميدانية شاملة / طلب عرض سعر",
+                    lblTime: "الوقت المفضل للتواصل أو المعاينة *",
+                    times: ["اليوم في أقرب وقت", "غداً صباحاً", "غداً مساءً", "خلال هذا الأسبوع", "طلب تسعيرة مبدئية عبر واتساب"],
+                    lblNotes: "مساحة المشروع أو تفاصيل إضافية (اختياري)",
+                    phNotes: "اكتب الموقع، المساحة التقريبية، أو أي متطلبات خاصة...",
+                    submitBtn: "إرسال طلب المعاينة وعرض السعر عبر واتساب",
+                    reviewsBadge: "تقييمات العملاء الموثقة على Google Maps",
+                    reviewsTitle: "ماذا يقول عملاؤنا عن جودة تنفيذ مشاريعهم؟",
+                    verifiedClient: "✔ عميل موثق في Google Maps",
+                    footerMap: "فتح موقعنا في Google Maps",
+                    floatingWa: "اطلب عرض سعر",
+                    rights: "جميع الحقوق محفوظة.",
+                    waIntro: "أود طلب عرض سعر / معاينة مشروع من خلال موقعكم الإلكتروني:",
+                    waLblService: "الخدمة المطلوبة",
+                    waLblExtra: "نوع العقار / المشروع",
+                    waLblTime: "وقت التواصل المفضل"
+                },
+                en: {
+                    navHome: "Home",
+                    navGallery: "Project Portfolio",
+                    navServices: "Our Services",
+                    navBook: "Request a Quote",
+                    navReviews: "Client Reviews",
+                    navCta: "Get Free Quote",
+                    coverBadge: "Direct Site Surveys & Project Quotations via WhatsApp",
+                    heroBtnPrimary: "Explore Completed Projects",
+                    heroBtnSecondary: "Request Free Quote",
+                    zoomLabel: "Tap to Zoom Photo",
+                    galleryTopTag: "OUR COMPLETED WORK PORTFOLIO",
+                    galleryTitle: "Real Photos of Our Projects & Execution",
+                    servicesTopTag: "TURNKEY QUALITY & ON-TIME DELIVERY",
+                    servicesTitle: "Our Specialized Services & Solutions",
+                    servicesSub: "Select a service below to request a site visit or quotation via WhatsApp",
+                    serviceCardBtn: "Request Quote on WhatsApp",
+                    bookingTopTag: "FREE CONSULTATION & COST ESTIMATE",
+                    bookingMainHeading: "Request a Site Survey or Project Quote",
+                    lblAddr: "Office Address:",
+                    lblPhone: "Direct Phone & WhatsApp:",
+                    lblHours: "Business Hours:",
+                    lblRating: "Google Maps Client Rating:",
+                    lblReviewsWord: "Verified Client Reviews",
+                    formHeading: "Send Your Project Details via WhatsApp",
+                    formBadge: "Fast Estimate",
+                    lblName: "Your Full Name *",
+                    phName: "Enter your full name...",
+                    lblExtra: "Property / Project Type *",
+                    extraOptions: [
+                        "Residential Villa / House",
+                        "Apartment / Penthouse",
+                        "Commercial Office / Retail Store",
+                        "Restaurant / Cafe / Hospitality",
+                        "Outdoor Landscape / Pool"
+                    ],
+                    lblService: "Required Service *",
+                    generalServiceOpt: "Site Survey / Full Quotation",
+                    lblTime: "Preferred Contact Time *",
+                    times: ["Today (ASAP)", "Tomorrow Morning", "Tomorrow Afternoon", "This Week", "WhatsApp Estimate Only"],
+                    lblNotes: "Project Area or Details (Optional)",
+                    phNotes: "Approximate size, location, or specific requirements...",
+                    submitBtn: "Send Quote / Survey Request via WhatsApp",
+                    reviewsBadge: "Verified Google Maps Reviews",
+                    reviewsTitle: "What Our Clients Say About Our Projects",
+                    verifiedClient: "✔ Verified Google Maps Client",
+                    footerMap: "Open Office Location in Google Maps",
+                    floatingWa: "Request Quote",
+                    rights: "All Rights Reserved.",
+                    waIntro: "I would like to request a project quote / site visit via your website:",
+                    waLblService: "Service Required",
+                    waLblExtra: "Property Type",
+                    waLblTime: "Preferred Time"
+                }
+            },
+            medical: {
+                sectionOrder: ["booking", "services", "gallery", "reviews"],
+                ar: {
+                    navHome: "الصفحة الرئيسية",
+                    navBook: "احجز موعدك",
+                    navServices: "التخصصات الطبية",
+                    navGallery: "صور العيادة",
+                    navReviews: "آراء المراجعين",
+                    navCta: "احجز موعدك الآن",
+                    coverBadge: "نستقبل حجوزات المواعيد والاستشارات الطبية مباشرة عبر واتساب",
+                    heroBtnPrimary: "احجز موعدك الفوري الآن",
+                    heroBtnSecondary: "تصفح التخصصات وصور العيادة",
+                    zoomLabel: "تكبير الصورة كاملة",
+                    bookingTopTag: "مكتب الحجز الإلكتروني المباشر",
+                    bookingMainHeading: "احجز موعدك الطبي اليوم",
+                    lblAddr: "عنوان العيادة:",
+                    lblPhone: "هاتف الحجز والواتساب المباشر:",
+                    lblHours: "ساعات العمل واستقبال المراجعين:",
+                    lblRating: "التقييم العام في خرائط جوجل:",
+                    lblReviewsWord: "مراجعة وتقييم موثق",
+                    formHeading: "راسلنا واحجز موعدك الطبي فوراً",
+                    formBadge: "تأكيد فوري للموعد",
+                    lblName: "الاسم الكريم *",
+                    phName: "أدخل اسمك الكامل...",
+                    lblExtra: "نوع الزيارة أو الموعد *",
+                    extraOptions: [
+                        "حجز كشف واستشارة طبية جديدة",
+                        "حجز جلسة علاجية / تجميلية",
+                        "مراجعة ومتابعة حالة سابقة",
+                        "حالة طارئة / ألم مستعجل",
+                        "استفسار عن الأسعار والعروض"
+                    ],
+                    lblService: "التخصص أو الخدمة الطبية المطلوبة *",
+                    generalServiceOpt: "استشارة طبية عامة / فحص شامل",
+                    lblTime: "الوقت المفضل للزيارة *",
+                    times: ["اليوم في أقرب وقت", "غداً صباحاً", "غداً مساءً", "خلال هذا الأسبوع", "استفسار قبل الحجز"],
+                    lblNotes: "ملاحظات أو استفسار للطبيب (اختياري)",
+                    phNotes: "اكتب أي أعراض أو استفسار تود إضافته...",
+                    submitBtn: "إرسال الطلب وتأكيد الموعد عبر واتساب",
+                    servicesTopTag: "رعاية طبية متكاملة بأحدث التقنيات",
+                    servicesTitle: "التخصصات والخدمات الطبية المتوفرة",
+                    servicesSub: "اختر التخصص المطلوب لحجز موعدك أو الاستفسار مباشرة عبر واتساب",
+                    serviceCardBtn: "احجز الموعد عبر واتساب",
+                    galleryTopTag: "جولة داخل العيادة والتجهيزات",
+                    galleryTitle: "معرض صور العيادة الحقيقية",
+                    reviewsBadge: "تقييمات المرضى والمراجعين على Google Maps",
+                    reviewsTitle: "ماذا يقول مراجعونا عن تجربتهم معنا؟",
+                    verifiedClient: "✔ مراجع موثق في Google Maps",
+                    footerMap: "فتح موقع العيادة في Google Maps",
+                    floatingWa: "حجز موعد طبي",
+                    rights: "جميع الحقوق محفوظة.",
+                    waIntro: "أود حجز موعد طبي من خلال موقعكم الإلكتروني:",
+                    waLblService: "التخصص المطلوب",
+                    waLblExtra: "نوع الزيارة",
+                    waLblTime: "الوقت المفضل للزيارة"
+                },
+                en: {
+                    navHome: "Home",
+                    navBook: "Book Appointment",
+                    navServices: "Medical Specialties",
+                    navGallery: "Clinic Gallery",
+                    navReviews: "Patient Reviews",
+                    navCta: "Book Appointment",
+                    coverBadge: "Direct Medical Appointments & Consultations via WhatsApp",
+                    heroBtnPrimary: "Book Your Appointment Now",
+                    heroBtnSecondary: "Explore Specialties & Clinic",
+                    zoomLabel: "Tap to Zoom Photo",
+                    bookingTopTag: "DIRECT PATIENT BOOKING DESK",
+                    bookingMainHeading: "Book Your Medical Appointment Today",
+                    lblAddr: "Clinic Address:",
+                    lblPhone: "Direct Appointment & WhatsApp:",
+                    lblHours: "Clinic Working Hours:",
+                    lblRating: "Google Maps Patient Rating:",
+                    lblReviewsWord: "Verified Patient Reviews",
+                    formHeading: "Schedule Your Appointment via WhatsApp",
+                    formBadge: "Instant Confirmation",
+                    lblName: "Patient Full Name *",
+                    phName: "Enter your full name...",
+                    lblExtra: "Appointment Type *",
+                    extraOptions: [
+                        "New Consultation & Checkup",
+                        "Treatment / Cosmetic Session",
+                        "Follow-up Visit",
+                        "Urgent Care / Emergency Pain",
+                        "Price & Treatment Inquiry"
+                    ],
+                    lblService: "Desired Medical Specialty *",
+                    generalServiceOpt: "General Medical / Dental Consultation",
+                    lblTime: "Preferred Visit Time *",
+                    times: ["Today (As soon as possible)", "Tomorrow Morning", "Tomorrow Afternoon", "Later This Week", "General Inquiry"],
+                    lblNotes: "Medical Notes or Questions (Optional)",
+                    phNotes: "Any specific symptoms or questions for the doctor...",
+                    submitBtn: "Confirm & Send Appointment on WhatsApp",
+                    servicesTopTag: "SPECIALIST CARE & ADVANCED TECHNOLOGY",
+                    servicesTitle: "Our Medical Specialties & Treatments",
+                    servicesSub: "Select any specialty below to book your appointment directly via WhatsApp",
+                    serviceCardBtn: "Book Appointment on WhatsApp",
+                    galleryTopTag: "INSIDE OUR MEDICAL FACILITY",
+                    galleryTitle: "Verified Clinic Photo Gallery",
+                    reviewsBadge: "Verified Google Maps Patient Reviews",
+                    reviewsTitle: "What Our Patients Say About Their Care",
+                    verifiedClient: "✔ Verified Google Maps Patient",
+                    footerMap: "Open Clinic Location in Google Maps",
+                    floatingWa: "Book Appointment",
+                    rights: "All Rights Reserved.",
+                    waIntro: "I would like to book a medical appointment via your website:",
+                    waLblService: "Specialty / Service",
+                    waLblExtra: "Visit Type",
+                    waLblTime: "Preferred Time"
+                }
             }
         };
 
@@ -556,7 +924,7 @@
                     city: "السالمية - الكويت",
                     hours: "السبت - الخميس: 9:00 صباحاً - 9:00 مساءً",
                     heroTitle: "رعاية أسنان فائقة الجودة • زراعة وتجميل وتقويم الأسنان",
-                    heroDesc: "صحة فمك وراحتك هما أولويتنا القصوى. لحجز موعد، استخدم النموذج أدناه وتواصل معنا وابدأ الخطوة الأولى نحو ابتسامة أكثر إشراقاً وصحة!",
+                    heroDesc: "صحة فمك وراحتك هما أولويتنا القصوى. لحجز موعدك الطبي، استخدم النموذج أدناه لنتواصل معك فوراً عبر واتساب.",
                     services: [
                         { icon: "fa-solid fa-tooth", title: "زراعة وجراحة الأسنان", desc: "تعويض الأسنان المفقودة بأحدث تقنيات الزراعة الرقمية المريحة وبدون ألم." },
                         { icon: "fa-solid fa-wand-magic-sparkles", title: "تجميل الأسنان والتركيبات", desc: "تصميم الابتسامة والتركيبات الخزفية الثابتة بمظهر طبيعي متناسق." },
@@ -601,8 +969,8 @@
                     englishBrand: "ROYAL SHIELD",
                     city: "جدة - السعودية",
                     hours: "يومياً: 10:00 صباحاً - 11:00 مساءً",
-                    heroTitle: "مركز متخصص في أفلام الحماية PPF والنانو سيراميك والعزل الحراري",
-                    heroDesc: "نحمي سيارتك ونعيد لها لمعة الوكالة بأجود المواد الأصلية المعتمدة مع ضمان رسمي موثق.",
+                    heroTitle: "مركز متخصص في أفلام الحماية PPF والنانو سيراميك والغسيل التفصيلي",
+                    heroDesc: "نحمي سيارتك ونعيد لها لمعة الوكالة بأجود المواد الأصلية المعتمدة. شاهد صور أعمالنا أعلاه واختر الباقة المناسبة لسيارتك.",
                     services: [
                         { icon: "fa-solid fa-shield-halved", title: "أفلام الحماية الشفافة PPF", desc: "حماية كاملة لطلاء السيارة من الخدوش والترميل بخاصية المعالجة الذاتية." },
                         { icon: "fa-solid fa-gem", title: "نانو سيراميك داخلي وخارجي", desc: "طبقات حماية كريستالية تمنح السيارة لمعاناً فائقاً وحماية من العوامل الجوية." },
@@ -645,15 +1013,15 @@
                 ar: {
                     businessName: "مطعم ولاونج السرايا",
                     englishBrand: "AL SARAYA",
-                    city: "الدمام - السعودية",
+                    city: "الدوحة - قطر",
                     hours: "يومياً: 12:30 ظهراً - 1:00 ص",
                     heroTitle: "أشهى المشويات والأطباق الطازجة مع جلسات عائلية راقية وخدمة توصيل",
-                    heroDesc: "نقدم لكم تجربة طعام استثنائية محضرة يومياً من أجود المكونات الطازجة. احجز طاولتك أو اطلب التوصيل المباشر.",
+                    heroDesc: "نقدم لكم تجربة طعام استثنائية محضرة يومياً من أجود المكونات الطازجة. احجز طاولتك مسبقاً أو اطلب التوصيل المباشر عبر واتساب.",
                     services: [
-                        { icon: "fa-solid fa-fire-burner", title: "الطلب المباشر من المنيو", desc: "اطلب وجبتك المفضلة مباشرة عبر واتساب لتصلك ساخنة وبأفضل سعر." },
-                        { icon: "fa-solid fa-chair", title: "حجز طاولة / جلسة عائلية", desc: "احجز طاولتك مسبقاً للأفراد أو العائلات لضمان أفضل مكان." },
-                        { icon: "fa-solid fa-champagne-glasses", title: "تجهيز الحفلات والولائم", desc: "تلبية طلبات المناسبات الخاصة، البوفيهات، والولائم العائلية." },
-                        { icon: "fa-solid fa-motorcycle", title: "خدمة التوصيل السريع", desc: "توصيل سريع ومباشر من المطعم إلى باب منزلك أو مكتبك." }
+                        { icon: "fa-solid fa-fire-burner", title: "المشويات والأطباق الرئيسية", desc: "تشكيلة فاخرة من الأطباق والمشويات المحضرة طازجة يومياً بتتبيلتنا الخاصة." },
+                        { icon: "fa-solid fa-chair", title: "حجز طاولة / جلسة عائلية", desc: "احجز طاولتك مسبقاً للأفراد أو العائلات لضمان أفضل مكان وخدمة ضيافة." },
+                        { icon: "fa-solid fa-champagne-glasses", title: "تجهيز الحفلات والولائم", desc: "تلبية طلبات المناسبات الخاصة، البوفيهات، والولائم العائلية بأعلى جودة." },
+                        { icon: "fa-solid fa-motorcycle", title: "الطلب المباشر والتوصيل السريع", desc: "اطلب وجبتك مباشرة عبر واتساب لتصلك ساخنة وسريعة لباب منزلك." }
                     ],
                     reviews: [
                         { name: "تركي الشمري", text: "الأكل لذيذ بشكل لا يوصف، والجلسات هادئة والخدمة سريعة جداً." },
@@ -694,7 +1062,7 @@
                     city: "الرياض - السعودية",
                     hours: "السبت - الخميس: 8:30 صباحاً - 9:00 مساءً",
                     heroTitle: "تصميم داخلي عصري، تشطيب متكامل، وتنفيذ مشاريع سكنية وتجارية",
-                    heroDesc: "نحول مساحتك إلى تحفة معمارية بأعلى معايير الجودة والالتزام التام بالمواعيد.",
+                    heroDesc: "نحول مساحتك إلى تحفة معمارية بأعلى معايير الجودة والالتزام التام بالمواعيد. اطلب معاينة ميدانية أو عرض سعر لمشروعك أدناه.",
                     services: [
                         { icon: "fa-solid fa-cubes", title: "التصميم الداخلي والمخططات 3D", desc: "تصاميم ثلاثية الأبعاد احترافية تتيح لك رؤية مشروعك قبل التنفيذ." },
                         { icon: "fa-solid fa-trowel-bricks", title: "أعمال التشطيب والديكور", desc: "تنفيذ كافة أعمال الديكور، الأرضيات، الإضاءة، والدهانات الحديثة." },
@@ -729,9 +1097,6 @@
             }
         };
 
-        /**
-         * 🎨 6 Mobile-Optimized SVG Logos (Aligned to Far Left & Supports AL LULU DENTAL!)
-         */
         function buildCustomSvgLogo(arName, enBrand, nicheKey, styleNum, accentColor, customLogoUrl) {
             if (customLogoUrl && customLogoUrl.trim() !== "") {
                 return `<img src="${customLogoUrl.trim()}" alt="${arName}" class="h-11 sm:h-14 w-auto max-w-[195px] sm:max-w-[240px] object-contain">`;
@@ -935,14 +1300,49 @@
             if (tc.sectionAltBg) root.style.setProperty("--section-alt-bg", tc.sectionAltBg);
         }
 
+        function applyNicheLayoutOrder(nicheProfile) {
+            const container = document.getElementById("dynamic-sections-container");
+            const order = nicheProfile.sectionOrder || ["gallery", "services", "booking", "reviews"];
+            order.forEach((secId, index) => {
+                const secEl = document.getElementById(secId);
+                if (secEl) {
+                    container.appendChild(secEl);
+                    // Alternate white and tinted backgrounds cleanly regardless of order
+                    if (index % 2 === 0) {
+                        secEl.classList.remove("dyn-alt-bg");
+                        secEl.classList.add("bg-white");
+                    } else {
+                        secEl.classList.remove("bg-white");
+                        secEl.classList.add("dyn-alt-bg");
+                    }
+                }
+            });
+
+            // Reorder desktop navigation links to match section order
+            const navContainer = document.getElementById("dynamic-nav-links");
+            const navMap = {
+                gallery: document.getElementById("nav-gallery"),
+                services: document.getElementById("nav-services"),
+                booking: document.getElementById("nav-book"),
+                reviews: document.getElementById("nav-reviews")
+            };
+            order.forEach(secId => {
+                if (navMap[secId] && navContainer) navContainer.appendChild(navMap[secId]);
+            });
+        }
+
         function renderSite() {
             applyCustomThemeColors();
 
             const nicheKey = SITE_CONFIG.activeNiche || "medical";
             const langKey = (SITE_CONFIG.activeLang === "en") ? "en" : "ar";
-            const ui = UI_TRANSLATIONS[langKey];
+            const nicheProfile = NICHE_UI_PROFILES[nicheKey] || NICHE_UI_PROFILES.medical;
+            const ui = nicheProfile[langKey] || nicheProfile.ar;
             const preset = NICHE_PRESETS[nicheKey] || NICHE_PRESETS.medical;
             const content = JSON.parse(JSON.stringify(preset[langKey] || preset.ar));
+
+            // 1. Reorder DOM Sections based on Niche (Gallery First for Food/Auto/Service, Booking First for Medical)
+            applyNicheLayoutOrder(nicheProfile);
 
             document.getElementById("html-root").lang = langKey;
             document.getElementById("html-root").dir = (langKey === "en") ? "ltr" : "rtl";
@@ -960,7 +1360,18 @@
                 if (cd.englishBrand) enBrand = cd.englishBrand;
                 if (cd.customLogoUrl) customLogoUrl = cd.customLogoUrl;
                 if (cd.heroTitle) content.heroTitle = cd.heroTitle;
-                if (cd.heroDesc) content.heroDesc = cd.heroDesc;
+                if (cd.heroDesc) {
+                    // Auto-fix old clinic wording if the site is a Restaurant, Auto Care, or Service
+                    let rawDesc = cd.heroDesc;
+                    if (nicheKey === "food" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز طاولتك أو الطلب المباشر، تصفح صورنا وأصنافنا واستخدم النموذج أدناه");
+                    } else if (nicheKey === "auto" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز خدمة لسيارتك أو معرفة أسعار الباقات، شاهد أعمالنا واستخدم النموذج أدناه");
+                    } else if (nicheKey === "service" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لطلب معاينة ميدانية أو عرض سعر لمشروعك، شاهد أعمالنا واستخدم النموذج أدناه");
+                    }
+                    content.heroDesc = rawDesc;
+                }
                 if (cd.city) content.city = cd.city;
                 if (cd.hours) content.hours = cd.hours;
                 if (cd.heroImg) activeHeroImg = cd.heroImg;
@@ -996,8 +1407,8 @@
             document.getElementById("top-rating").innerText = SITE_CONFIG.rating;
             document.getElementById("top-map-link").href = SITE_CONFIG.googleMapsUrl;
             document.getElementById("top-welcome-ticker").innerText = langKey === "en"
-                ? `✹ Welcome to ${content.businessName} (${content.city}) ✹ ${content.hours} ✹ Book Online Today via WhatsApp!`
-                : `✹ أهلاً بكم في ${content.businessName} (${content.city}) ✹ ${content.hours} ✹ احجز موعدك اليوم عبر واتساب!`;
+                ? `✹ Welcome to ${content.businessName} (${content.city}) ✹ ${content.hours}`
+                : `✹ أهلاً بكم في ${content.businessName} (${content.city}) ✹ ${content.hours}`;
 
             document.getElementById("nav-home").innerText = ui.navHome;
             document.getElementById("nav-book").innerText = ui.navBook;
@@ -1006,6 +1417,20 @@
             document.getElementById("nav-reviews").innerText = ui.navReviews;
             document.getElementById("nav-cta-text").innerText = ui.navCta;
             document.getElementById("cover-badge").innerText = ui.coverBadge;
+
+            // Update Cover Quick Action Buttons per Niche
+            const btnPrimary = document.getElementById("hero-btn-primary");
+            const btnSecondary = document.getElementById("hero-btn-secondary");
+            document.getElementById("hero-btn-primary-txt").innerText = ui.heroBtnPrimary;
+            document.getElementById("hero-btn-secondary-txt").innerText = ui.heroBtnSecondary;
+            if (nicheKey === "medical") {
+                btnPrimary.href = "#booking";
+                btnSecondary.href = "#services";
+            } else {
+                btnPrimary.href = "#gallery";
+                btnSecondary.href = "#booking";
+            }
+
             document.getElementById("mobile-zoom-label").innerText = ui.zoomLabel;
             document.getElementById("desktop-zoom-label").innerText = ui.zoomLabel;
             document.getElementById("booking-top-tag").innerText = ui.bookingTopTag;
@@ -1019,6 +1444,7 @@
             document.getElementById("form-badge").innerText = ui.formBadge;
             document.getElementById("label-name").innerText = ui.lblName;
             document.getElementById("input-name").placeholder = ui.phName;
+            document.getElementById("label-extra").innerText = ui.lblExtra;
             document.getElementById("label-service").innerText = ui.lblService;
             document.getElementById("label-time").innerText = ui.lblTime;
             document.getElementById("label-notes").innerText = ui.lblNotes;
@@ -1052,6 +1478,16 @@
             document.getElementById("booking-hours").innerText = content.hours;
             document.getElementById("stat-rating").innerText = `${SITE_CONFIG.rating} ⭐`;
             document.getElementById("stat-reviews").innerText = `+${SITE_CONFIG.reviewsCount}`;
+
+            // Populate Niche-Specific Extra Dropdown (Guests/Delivery for Food, Car Type for Auto, Property for Service, Visit Type for Medical)
+            const extraSelect = document.getElementById("input-extra");
+            extraSelect.innerHTML = "";
+            (ui.extraOptions || []).forEach(optText => {
+                const opt = document.createElement("option");
+                opt.value = optText;
+                opt.innerText = optText;
+                extraSelect.appendChild(opt);
+            });
 
             const servicesGrid = document.getElementById("services-grid");
             const serviceSelect = document.getElementById("input-service");
@@ -1158,8 +1594,13 @@
 
         function sendToWhatsApp(e) {
             e.preventDefault();
+            const nicheKey = SITE_CONFIG.activeNiche || "medical";
             const langKey = (SITE_CONFIG.activeLang === "en") ? "en" : "ar";
+            const nicheProfile = NICHE_UI_PROFILES[nicheKey] || NICHE_UI_PROFILES.medical;
+            const ui = nicheProfile[langKey] || nicheProfile.ar;
+
             const name = document.getElementById("input-name").value.trim();
+            const extra = document.getElementById("input-extra").value;
             const service = document.getElementById("input-service").value;
             const time = document.getElementById("input-time").value;
             const notes = document.getElementById("input-notes").value.trim();
@@ -1167,10 +1608,10 @@
 
             let msg = "";
             if (langKey === "en") {
-                msg = `Hello *${bizName}* 👋\n\nI would like to book an appointment / service via your website:\n• *Name:* ${name}\n• *Service:* ${service}\n• *Preferred Time:* ${time}`;
+                msg = `Hello *${bizName}* 👋\n\n${ui.waIntro}\n• *Name:* ${name}\n• *${ui.waLblExtra}:* ${extra}\n• *${ui.waLblService}:* ${service}\n• *${ui.waLblTime}:* ${time}`;
                 if (notes) msg += `\n• *Notes:* ${notes}`;
             } else {
-                msg = `مرحباً *${bizName}* 👋\n\nأود حجز موعد / طلب خدمة من خلال موقعكم الإلكتروني:\n• *الاسم:* ${name}\n• *الخدمة المطلوبة:* ${service}\n• *الوقت المفضل:* ${time}`;
+                msg = `مرحباً *${bizName}* 👋\n\n${ui.waIntro}\n• *الاسم:* ${name}\n• *${ui.waLblExtra}:* ${extra}\n• *${ui.waLblService}:* ${service}\n• *${ui.waLblTime}:* ${time}`;
                 if (notes) msg += `\n• *ملاحظات:* ${notes}`;
             }
 
