@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title id="page-title">Loading...</title>
+    <title id="page-title">LUCIDA DENTAL CENTER | الموقع الرسمي والحجز المباشر</title>
+    <!--__START_OG_META__-->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LUCIDA DENTAL CENTER | الموقع الرسمي والحجز المباشر">
+    <meta property="og:description" content="تصفح الخدمات ومعرض الصور الحقيقية في الدوحة، واحجز موعدك مباشرة عبر واتساب.">
+    <meta property="og:image" content="https://lh3.googleusercontent.com/grass-cs/AABkmLfu2sFxSZ6WjuhyqMQFm4-Ok0LcQxdvTyI7__O1dvoyfgRBLV2qfR978wmXS1rcVdObGwCQi9kQ8JqbftibFKG-2EywM8CHQ3RWELsR6lv-H36hQF4v6eFcxPm6o-m9RQTwg8TU81w-ZaYz=w1400-h1000-k-no">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="تصفح الخدمات ومعرض الصور الحقيقية في الدوحة، واحجز موعدك مباشرة عبر واتساب.">
+    <!--__END_OG_META__-->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -359,8 +369,12 @@
 
     <!-- 8. LIVE INTERACTIVE GOOGLE MAP -->
     <section class="py-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div class="rounded-2xl overflow-hidden shadow-lg border border-stone-200 h-72 sm:h-96 w-full">
+        <div class="relative rounded-2xl overflow-hidden shadow-lg border border-stone-200 h-72 sm:h-96 w-full">
             <iframe id="live-google-map" class="w-full h-full border-0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <a id="map-direct-card-btn" href="#booking" target="_blank" class="absolute bottom-4 right-14 z-10 bg-white/95 hover:bg-white text-slate-900 px-4 py-2.5 rounded-xl font-extrabold text-xs sm:text-sm shadow-xl border border-stone-300 flex items-center gap-2 transition">
+                <i class="fa-solid fa-location-dot text-red-600 text-base"></i>
+                <span id="map-direct-btn-text">فتح موقع العيادة والاتجاهات في خرائط جوجل</span>
+            </a>
         </div>
     </section>
 
@@ -390,7 +404,9 @@
         "activeLang": "ar",
         "showDemoBar": false,
         "whatsappNumber": "97455311553",
-        "googleMapsUrl": "https://www.google.com/maps/place/LUCIDA+DENTAL+CENTER/data=!4m7!3m6!1s0x3e45dbe235ce9365:0xebbba0ada73bf781!8m2!3d25.2650356!4d51.4752685!16s%2Fg%2F11fd7dcv31!19sChIJZZPONeLbRT4Rgfc7p62gu-s?authuser=0&hl=ar&g_ep=EgoyMDI2MTExMC4wIJJjKgBIAVAD&rclk=1",
+        "googleMapsUrl": "https://www.google.com/maps?cid=16986347087253469057",
+        "mapCoords": "25.2650356,51.4752685",
+        "mapCid": "16986347087253469057",
         "rating": "4.7",
         "reviewsCount": "161",
         "logoStyle": 4,
@@ -408,30 +424,25 @@
                 "businessName": "LUCIDA DENTAL CENTER",
                 "englishBrand": "LUCIDA DENTAL",
                 "customLogoUrl": "",
-                "heroTitle": "عِيادة أسنان في الدوحة بن محمود — رعاية طبية واستشارية متكاملة بأحدث التقنيات",
-                "heroDesc": "في LUCIDA DENTAL CENTER (Sany, Bu Hasa St، الدوحة، قطر)، نقدم خدمات علاج العصب والجذور والحشوات، الفحص الشامل وعلاج اللثة، استشارة طبية وفحص شامل بأعلى معايير الجودة والاحترافية الطبية. لحجز موعدك أو الاستفسار، استخدم النموذج أدناه لنتواصل معك فوراً عبر واتساب.",
+                "heroTitle": "عِيادة أسنان في الدوحة — رعاية طبية واستشارية متكاملة بأحدث التقنيات",
+                "heroDesc": "في LUCIDA DENTAL CENTER (Sany, Bu Hasa St، الدوحة، قطر)، نقدم خدمات طب وعلاج أسنان الأطفال، استشارة طبية وفحص شامل، العناية بصحة الفم والأسنان بأعلى معايير الجودة والاحترافية الطبية. لحجز موعدك أو الاستفسار، استخدم النموذج أدناه لنتواصل معك فوراً عبر واتساب.",
                 "city": "Sany, Bu Hasa St، الدوحة، قطر",
                 "hours": "يومياً: نعمل على مدار 24 ساعة",
-                "heroImg": "https://lh3.googleusercontent.com/grass-cs/AABkmLdby0Ba0efoGDY_7ta75V4lB3rTUsxaBZOlh7OZ1qCyaL51qadU9qWctmAwKlnN9ASapCbocxHzJA_4R4akTfU2LJzdOCmfdZFWRtsZnN7OC_EWuGbFyCGiJweCI_aBCQ0Egc-jMu9cl8xy=w1400-h1000-k-no",
+                "heroImg": "https://lh3.googleusercontent.com/grass-cs/AABkmLfu2sFxSZ6WjuhyqMQFm4-Ok0LcQxdvTyI7__O1dvoyfgRBLV2qfR978wmXS1rcVdObGwCQi9kQ8JqbftibFKG-2EywM8CHQ3RWELsR6lv-H36hQF4v6eFcxPm6o-m9RQTwg8TU81w-ZaYz=w1400-h1000-k-no",
                 "coverRightImg": "",
                 "gallery": [
-                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9TI4sDDsvBv8IHOfqhuEvKs7FqyvfdoB61PEGW4A671JIYwYqgJ75hoRXaqbzppYeT59chtp7wTlPcSoLfPuWt_px17SXlgbZyhQPRDSK6_esZW0pG_Y8TTg_qZN0k82LtyE8EfPLqXrjbk=w1400-h1000-k-no",
-                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9S1-JgUNeQaytkhgvWpquaOsZToNLBjWnOhsqjz2Tisc5ac1MirCV56cXCng0hj6I5xT6YEXu_erCBnkBWjzzJkIJuanzOHYaWSvRF9jUP4Xbce-AGi0P1JBRhZfAIzau5Qm0vp=w1400-h1000-k-no",
-                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9Rbus-Vb4Dn51qF0NDw2n_1C5-TYm-d-cJ_t3TFn6zZT31JLFcObEvZ1jYzwOXGnmbCx-1H6XhEs4nl2LSE5V4FKZqbhxO8N8eR8-cOue2iUVMPqDDEMX2a7T3D3wzpPnD9OLSBMJ6v19vw=w1400-h1000-k-no",
-                        "https://lh3.googleusercontent.com/grass-cs/AABkmLe9xzFTkjgqgi-veXkm33spoVdqJoSIAijsXu-9UYkeGKu2hmcqfCOUFuJPC0mntytPvydvtL6brnT9dx1wNxsiuhaPcUgjeTNI7kNV9mCiU443AYxmQXYTS7Q1aFaE1xF_2K6brtcHpi_Q=w1400-h1000-k-no",
-                        "https://lh3.googleusercontent.com/grass-cs/AABkmLfVgn32hwTEcAezUiZNYqB8Asf0gxCVBaK4KuIraOIbRJR6FeHPYfKeviLZyN-CG7n7vB6BNTTCFFqhgWmQcRg0AcYdpPc5SXx6wG9803QMt959iX6pkF8wOagkQmuU6Zw4WUizHeV-ysY=w1400-h1000-k-no",
-                        "https://lh3.googleusercontent.com/grass-cs/AABkmLcBLU-B18IdmwmVGYI9UDxYs9PpTU-C7vaOGwBw5pw2_4FQ02AlqBJfliaxpx0PDhfnKi4MuOfw5x-25A3-R7SkGWPXGBS7WDqmAAS2AdMRlSt5KuW4s1JaJGgg3KD7582OgVxu=w1400-h1000-k-no"
+                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9ShuiTSiXglNqT6NzMfpQ0BNS0evzPzJtjO-3BFF73C4LQwkF-AdMW0uiN8KkX6xTWyYIOkDzKJZc0jfWeu2RuJSl4pXFQGjg7CzZo88ylUyCvSeoB8tbE0sIE_9CkVA3M3vuNMkFqGEjo2=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9RbOjgLoMynjiljNy9OZe8s0SjWqMLdgaLHD9dR6zbc6t6ThRmlw6J2XAQDnXCypszF0Alb9XOTjmW48ecRaoBVtrHXPIzsNRYVkLw1lz1SMs-phvD-3cFkogNsbmE4ObsXS9pb=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/gps-cs-s/ANWiy9QftkGTqW7w_B4sCFPPlqqthAZPvyTIRWie2o4Clcf7nV5ERCh-2OhxiJ9iYzF3T-meQMqsZxUCIAf3P1ZbF6NLti4u1SVpedXB_gzATZiG0CoXQjiyTEr-iQr5XPBu1keVgaZHAxQZ0PyG=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLf1v9fgGB4bOkRTTd-8_gY6yISUpPspr922W75feMzI6MJoWbvsNL9sDcO6scfwusVEP53DRcNXKM9NuDnWCleOsr9G66t2AjUfSOVHTSaiV1G-bjGn3m2T8sTdWr970GOXwUo_OBaAe7BO=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLfIlwKRgLmNMGo1mLzMNjjrhPa6mTavdr1zlmmA06-Ho1RwHt_G1sy7Dm1I4ef1AbCUgE6v8CU4oWsC2KGbSkQsZkjlx2opDNUGDmBVsj6RlyQ_Iz9f0Nj1qHZaOt5m8YaVXwNTLgt83aQ=w1400-h1000-k-no",
+                        "https://lh3.googleusercontent.com/grass-cs/AABkmLe11FmzseF_9Ycs59uSDi-3qkM1EWIOYTLG8STgQKpSBY9hzuFMEcJvSAQmDTIChNMWAP5Fng4XiKYlzFbny4e9sI7vKNnIOVYMOGGTj6v8b6GgavtJDG5nHRDkdCTWduZjdBL0=w1400-h1000-k-no"
                 ],
                 "services": [
                         {
-                                "icon": "fa-solid fa-microscope",
-                                "title": "علاج العصب والجذور والحشوات",
-                                "desc": "علاج دقيق لجذور وعصب الأسنان بأحدث الأجهزة الرقمية في جلسات مريحة وسريعة."
-                        },
-                        {
-                                "icon": "fa-solid fa-stethoscope",
-                                "title": "الفحص الشامل وعلاج اللثة",
-                                "desc": "استشارة طبية دقيقة، إزالة الجير وتلميع الأسنان، والعناية بصحة اللثة."
+                                "icon": "fa-solid fa-child-reaching",
+                                "title": "طب وعلاج أسنان الأطفال",
+                                "desc": "رعاية لطيفة ومتخصصة لأسنان الأطفال، جلسات الفلورايد، والحشوات الوقائية والتجميلية."
                         },
                         {
                                 "icon": "fa-solid fa-stethoscope",
@@ -442,20 +453,25 @@
                                 "icon": "fa-solid fa-tooth",
                                 "title": "العناية بصحة الفم والأسنان",
                                 "desc": "جلسات تنظيف الأسنان والعناية الدورية والوقائية بأحدث الأجهزة الطبية."
+                        },
+                        {
+                                "icon": "fa-solid fa-wand-magic-sparkles",
+                                "title": "تجميل الأسنان والتركيبات",
+                                "desc": "تصميم الابتسامة والتركيبات الثابتة بمظهر طبيعي متناسق."
                         }
                 ],
                 "reviews": [
                         {
                                 "name": "BEM",
-                                "text": "تجربتي مع العيادة كانت ممتازة. العيادة نظيفة ومنظمة، وسهولة الحصول على موعد والدخول على الدكتور كانت من الأمور اللي أعجبتني. … المزيد"
+                                "text": "تجربتي مع العيادة كانت ممتازة. العيادة نظيفة ومنظمة، وسهولة الحصول على موعد والدخول على الدكتور كانت من الأمور اللي أعجبتني. ولدي كان يتابع علاجه عند الدكتور أمير، الدكتور ممتاز وأسلوبه مع الأطفال رائع، هادئ ويعرف كيف يتعامل معهم ويخليهم مر"
                         },
                         {
                                 "name": "",
-                                "text": "تجربتي مع العيادة كانت ممتازة. العيادة نظيفة ومنظمة، وسهولة الحصول على موعد والدخول على الدكتور كانت من الأمور اللي أعجبتني. … المزيد"
+                                "text": "تجربتي مع العيادة كانت ممتازة. العيادة نظيفة ومنظمة، وسهولة الحصول على موعد والدخول على الدكتور كانت من الأمور اللي أعجبتني. ولدي كان يتابع علاجه عند الدكتور أمير، الدكتور ممتاز وأسلوبه مع الأطفال رائع، هادئ ويعرف كيف يتعامل معهم ويخليهم مر"
                         },
                         {
                                 "name": "F. Al-Yafei",
-                                "text": "كانت لنا تجربة ممتازة مع Lucida Dental Center (LDC). احتجنا إلى طوارئ أسنان في الساعة 1:30 صباحًا، وبعد التواصل مع أكثر من عيادة ومركز طوارئ، كان Lucida Dental Center الأسرع في الاستجابة. … المزيد"
+                                "text": "كانت لنا تجربة ممتازة مع Lucida Dental Center (LDC). احتجنا إلى طوارئ أسنان في الساعة 1:30 صباحًا، وبعد التواصل مع أكثر من عيادة ومركز طوارئ، كان Lucida Dental Center الأسرع في الاستجابة. كل الشكر للدكتور Amir على اهتمامه واحترافيته، وكذلك "
                         }
                 ]
         }
@@ -1097,7 +1113,7 @@
             }
         };
 
-        function buildCustomSvgLogo(arName, enBrand, nicheKey, styleNum, accentColor, customLogoUrl) {
+        function buildCustomSvgLogo(arName, enBrand, nicheKey, styleNum, accentColor, customLogoUrl, langKey = "ar") {
             if (customLogoUrl && customLogoUrl.trim() !== "") {
                 return `<img src="${customLogoUrl.trim()}" alt="${arName}" class="h-11 sm:h-14 w-auto max-w-[195px] sm:max-w-[240px] object-contain">`;
             }
@@ -1113,7 +1129,11 @@
             const initial = firstWord.replace(/^(AL|EL)[\s\-]+/, "").charAt(0) || "R";
             const color = accentColor || "#a68a3d";
             const s = Number(styleNum) || 1;
-            const cleanAr = (arName || "").replace(/\s*-\s*/g, " ").trim();
+            let cleanAr = (arName || "").replace(/\s*-\s*/g, " ").trim();
+            if (langKey === "en" && /[\u0600-\u06FF]/.test(cleanAr)) {
+                cleanAr = "";
+            }
+            const subFontClass = (langKey === "en") ? "font-en" : "font-ar";
 
             if (s === 1) {
                 return `
@@ -1125,7 +1145,7 @@
                         <svg class="w-full h-2.5 sm:h-3.5 -mt-0.5" viewBox="0 0 180 16" fill="none">
                             <path d="M2 12 C 25 2, 45 15, 70 5 C 95 -2, 130 11, 178 7" stroke="${color}" stroke-width="2.2" stroke-linecap="round"/>
                         </svg>
-                        <span class="font-ar text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left">${cleanAr}</span>
+                        ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left">${cleanAr}</span>` : ""}
                     </div>
                 `;
             }
@@ -1138,7 +1158,7 @@
                         </svg>
                         <div class="flex flex-col items-start leading-tight min-w-0">
                             <div class="font-logo text-xs sm:text-lg font-extrabold tracking-wider text-slate-900 whitespace-nowrap truncate w-full">${firstWord} <span style="color:${color}">${secondWord}</span></div>
-                            <span class="font-ar text-[10px] sm:text-xs font-bold text-slate-600 truncate w-full text-left">${cleanAr}</span>
+                            ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-bold text-slate-600 truncate w-full text-left">${cleanAr}</span>` : ""}
                         </div>
                     </div>
                 `;
@@ -1152,7 +1172,7 @@
                         </svg>
                         <div class="border-l-2 pl-2 flex flex-col items-start leading-tight min-w-0" style="border-color:${color}">
                             <div class="font-logo text-xs sm:text-lg font-black tracking-wider text-slate-900 whitespace-nowrap truncate w-full">${firstWord} <span style="color:${color}">${secondWord}</span></div>
-                            <span class="font-ar text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left">${cleanAr}</span>
+                            ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left">${cleanAr}</span>` : ""}
                         </div>
                     </div>
                 `;
@@ -1164,7 +1184,7 @@
                             <span class="px-1.5 py-0.5 rounded text-white font-logo text-[10px] sm:text-xs font-extrabold tracking-widest" style="background-color:${color}">${firstWord}</span>
                             <span class="font-logo text-xs sm:text-base font-extrabold tracking-wider text-slate-900">${secondWord}</span>
                         </div>
-                        <span class="font-ar text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left mt-1">${cleanAr}</span>
+                        ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-extrabold text-slate-700 truncate w-full text-left mt-1">${cleanAr}</span>` : ""}
                     </div>
                 `;
             }
@@ -1179,7 +1199,7 @@
                             <div class="font-logo text-xs sm:text-lg font-extrabold tracking-wider whitespace-nowrap truncate w-full">
                                 <span style="color:${color}">${firstWord}</span> <span class="text-slate-900">${secondWord}</span>
                             </div>
-                            <span class="font-ar text-[10px] sm:text-xs font-bold text-slate-700 truncate w-full text-left mt-0.5">${cleanAr}</span>
+                            ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-bold text-slate-700 truncate w-full text-left mt-0.5">${cleanAr}</span>` : ""}
                         </div>
                     </div>
                 `;
@@ -1193,7 +1213,7 @@
                     </svg>
                     <div class="flex flex-col items-start leading-tight min-w-0">
                         <div class="font-logo text-xs sm:text-lg font-extrabold tracking-wider text-slate-900 whitespace-nowrap truncate w-full">${firstWord} <span style="color:${color}">${secondWord}</span></div>
-                        <span class="font-ar text-[10px] sm:text-xs font-extrabold text-slate-600 truncate w-full text-left">${cleanAr}</span>
+                        ${cleanAr ? `<span class="${subFontClass} text-[10px] sm:text-xs font-extrabold text-slate-600 truncate w-full text-left">${cleanAr}</span>` : ""}
                     </div>
                 </div>
             `;
@@ -1331,6 +1351,246 @@
             });
         }
 
+        
+        // =====================================================================
+        // 🌐 AUTO-ENGLISH ENGINE (Eliminates ALL Arabic text when activeLang = "en")
+        // =====================================================================
+        function hasArabicText(str) {
+            return /[\u0600-\u06FF]/.test(str || "");
+        }
+
+        function toTitleCaseEn(str) {
+            return (str || "").toLowerCase().replace(/\b\w/g, c => c.toUpperCase()).trim();
+        }
+
+        function translateArabicCityToEn(rawCity, fallbackCity) {
+            if (!rawCity || !hasArabicText(rawCity)) return rawCity || fallbackCity;
+
+            const cityDict = [
+                ["المملكة العربية السعودية", "Saudi Arabia"],
+                ["الإمارات العربية المتحدة", "UAE"],
+                ["المدينة المنورة", "Madinah"],
+                ["مكة المكرمة", "Makkah"],
+                ["خميس مشيط", "Khamis Mushait"],
+                ["الخليج التجاري", "Business Bay"],
+                ["رأس الخيمة", "Ras Al Khaimah"],
+                ["سلطنة عمان", "Oman"],
+                ["مدينة الكويت", "Kuwait City"],
+                ["مدينة عيسى", "Isa Town"],
+                ["بن محمود", "Bin Mahmoud"],
+                ["السعودية", "Saudi Arabia"],
+                ["الإمارات", "UAE"],
+                ["الرياض", "Riyadh"],
+                ["جدة", "Jeddah"],
+                ["الدمام", "Dammam"],
+                ["الخبر", "Al Khobar"],
+                ["الظهران", "Dhahran"],
+                ["مكة", "Makkah"],
+                ["المدينة", "Madinah"],
+                ["الطائف", "Taif"],
+                ["أبها", "Abha"],
+                ["تبوك", "Tabuk"],
+                ["بريدة", "Buraidah"],
+                ["الجبيل", "Jubail"],
+                ["الأحساء", "Al Ahsa"],
+                ["دبي", "Dubai"],
+                ["أبوظبي", "Abu Dhabi"],
+                ["ابوظبي", "Abu Dhabi"],
+                ["الشارقة", "Sharjah"],
+                ["العين", "Al Ain"],
+                ["عجمان", "Ajman"],
+                ["الدوحة", "Doha"],
+                ["لوسيل", "Lusail"],
+                ["الريان", "Al Rayyan"],
+                ["الوكرة", "Al Wakrah"],
+                ["قطر", "Qatar"],
+                ["السالمية", "Salmiya"],
+                ["حولي", "Hawalli"],
+                ["الجابرية", "Jabriya"],
+                ["الفروانية", "Farwaniya"],
+                ["الجهراء", "Jahra"],
+                ["الفحيحيل", "Fahaheel"],
+                ["الكويت", "Kuwait"],
+                ["المنامة", "Manama"],
+                ["الرفاع", "Riffa"],
+                ["المحرق", "Muharraq"],
+                ["البحرين", "Bahrain"],
+                ["مسقط", "Muscat"],
+                ["صلالة", "Salalah"],
+                ["صحار", "Sohar"],
+                ["عمان", "Oman"],
+                ["العليا", "Al Olaya"],
+                ["الملقا", "Al Malqa"],
+                ["النرجس", "Al Narjis"],
+                ["الياسمين", "Al Yasmin"],
+                ["السليمانية", "Al Sulimaniyah"],
+                ["الروضة", "Al Rawdah"],
+                ["النسيم", "Al Naseem"],
+                ["السلامة", "Al Salamah"],
+                ["الشاطئ", "Al Shati"],
+                ["العقربية", "Al Aqrabiyah"],
+                ["جميرا", "Jumeirah"],
+                ["ديرة", "Deira"],
+                ["البرشاء", "Al Barsha"],
+                ["مردف", "Mirdif"],
+                ["مارينا", "Marina"],
+                ["القوز", "Al Quoz"],
+                ["الخالدية", "Al Khalidiyah"],
+                ["المصفح", "Mussafah"],
+                ["المجاز", "Al Majaz"],
+                ["النهدة", "Al Nahda"],
+                ["السد", "Al Sadd"],
+                ["المرخية", "Al Markhiya"],
+                ["معيذر", "Muaither"],
+                ["الغرافة", "Al Gharrafa"],
+                ["العزيزية", "Al Aziziyah"],
+                ["الجفير", "Juffair"],
+                ["السيف", "Seef"],
+                ["الخوير", "Al Khuwair"],
+                ["بوشر", "Bawshar"],
+                ["السيب", "Seeb"],
+                ["القرم", "Al Qurum"],
+                ["شرق", "Sharq"],
+                ["شارع", "St."],
+                ["طريق", "Rd."],
+                ["حي", ""]
+            ];
+
+            let out = rawCity.replace(/،/g, ", ");
+            for (const [arWord, enWord] of cityDict) {
+                if (out.includes(arWord)) {
+                    out = out.split(arWord).join(enWord);
+                }
+            }
+            // Strip any remaining untranslated Arabic characters cleanly
+            out = out.replace(/[\u0600-\u06FF]+/g, "");
+            out = out.replace(/\s*,\s*(?:,\s*)+/g, ", ").replace(/^[\s,\-–—]+|[\s,\-–—]+$/g, "").replace(/\s{2,}/g, " ").trim();
+
+            if (!out || !/[A-Za-z]{2,}/.test(out)) {
+                return fallbackCity;
+            }
+            return out;
+        }
+
+        function translateArabicHoursToEn(rawHours, fallbackHours) {
+            if (!rawHours || !hasArabicText(rawHours)) return rawHours || fallbackHours;
+
+            const hoursDict = [
+                ["نعمل على مدار 24 ساعة", "Open 24 Hours"],
+                ["مفتوح على مدار 24 ساعة", "Open 24 Hours"],
+                ["مفتوح 24 ساعة", "Open 24 Hours"],
+                ["على مدار 24 ساعة", "Open 24 Hours"],
+                ["السبت - الخميس", "Sat - Thu"],
+                ["الأحد - الخميس", "Sun - Thu"],
+                ["الاحد - الخميس", "Sun - Thu"],
+                ["(الجمعة مغلق)", "(Fri Closed)"],
+                ["الجمعة مغلق", "Fri Closed"],
+                ["يومياً", "Daily"],
+                ["يوميا", "Daily"],
+                ["السبت", "Sat"],
+                ["الأحد", "Sun"],
+                ["الاحد", "Sun"],
+                ["الإثنين", "Mon"],
+                ["الاثنين", "Mon"],
+                ["الثلاثاء", "Tue"],
+                ["الأربعاء", "Wed"],
+                ["الاربعاء", "Wed"],
+                ["الخميس", "Thu"],
+                ["الجمعة", "Fri"],
+                ["صباحاً", "AM"],
+                ["صباحا", "AM"],
+                ["ظهراً", "PM"],
+                ["ظهرا", "PM"],
+                ["عصراً", "PM"],
+                ["مساءً", "PM"],
+                ["مساءا", "PM"],
+                ["مساء", "PM"],
+                ["مغلق", "Closed"],
+                ["حتى", "-"],
+                ["إلى", "-"],
+                [" ص", " AM"],
+                [" م", " PM"]
+            ];
+
+            let out = rawHours;
+            for (const [arH, enH] of hoursDict) {
+                out = out.split(arH).join(enH);
+            }
+            if (hasArabicText(out)) {
+                return fallbackHours;
+            }
+            return out.replace(/\s{2,}/g, " ").trim();
+        }
+
+        const ARABIC_SERVICE_TO_EN = {
+            // Medical
+            "جراحة الفم والفكين المتخصصة": { title: "Oral & Maxillofacial Surgery", desc: "Safe, painless oral surgery and surgical extractions performed by experienced specialists." },
+            "زراعة الأسنان الاستشارية": { title: "Specialist Dental Implants", desc: "Permanent, natural-looking tooth replacement using advanced guided implant technology." },
+            "طب وعلاج أسنان الأطفال": { title: "Pediatric Dentistry", desc: "Gentle, specialized dental care, fluoride treatments, and preventive checkups for children." },
+            "تقويم الأسنان المعدني والشفاف": { title: "Braces & Clear Aligners", desc: "Modern orthodontic solutions including clear aligners and precision braces for all ages." },
+            "علاج العصب والجذور والحشوات": { title: "Root Canal & Restorative Care", desc: "Precision digital endodontics and painless tooth fillings in comfortable sessions." },
+            "تجميل الأسنان والتركيبات الثابتة": { title: "Cosmetic Dentistry & Veneers", desc: "Smile makeovers, professional whitening, and custom zirconia & porcelain veneers." },
+            "العناية بالبشرة والليزر والتجميل": { title: "Dermatology & Laser Aesthetics", desc: "Advanced skin rejuvenation, medical laser, and aesthetic treatments by specialists." },
+            "الفحص الشامل وعلاج اللثة": { title: "Comprehensive Checkup & Gum Care", desc: "Thorough diagnostic consultation, scaling & polishing, and periodontal care." },
+            "استشارة طبية وفحص شامل": { title: "Medical Consultation & Checkup", desc: "Accurate diagnosis and a clear, personalized treatment plan tailored to your needs." },
+            "العناية بصحة الفم والأسنان": { title: "Oral Hygiene & Preventive Care", desc: "Routine dental cleanings and preventive treatments with modern clinical equipment." },
+            "تجميل الأسنان والتركيبات": { title: "Cosmetic Dentistry & Crowns", desc: "Natural-looking veneers, crowns, and bespoke smile design treatments." },
+            "حجز موعد فوري ومباشر": { title: "Instant WhatsApp Booking", desc: "Schedule your visit directly via WhatsApp at your preferred time with zero waiting." },
+            // Auto
+            "أفلام الحماية الشفافة (PPF)": { title: "Paint Protection Film (PPF)", desc: "Self-healing invisible armor protecting your vehicle paint from chips and scratches." },
+            "حماية النانو سيراميك الملكي": { title: "9H Nano-Ceramic Coating", desc: "Crystalline multi-layer coating delivering showroom gloss and weather protection." },
+            "التظليل والعزل الحراري للزجاج": { title: "Ceramic Window Tinting", desc: "High-grade nano-ceramic film blocking up to 99% of UV rays and cabin heat." },
+            "التلميع الساطع والغسيل التفصيلي": { title: "Paint Polishing & Deep Detailing", desc: "Swirl-mark removal, exterior gloss restoration, and deep interior detailing." },
+            "الفحص بالكمبيوتر والصيانة الشاملة": { title: "Diagnostics & Full Maintenance", desc: "Computerized vehicle diagnostics, engine servicing, electrical, and AC repair." },
+            "فحص ومعاينة حالة السيارة": { title: "Vehicle Inspection & Assessment", desc: "Detailed assessment of your car with expert recommendations for care and protection." },
+            "حجز موعد واستفسار عن الأسعار": { title: "Booking & Package Pricing", desc: "Contact us directly on WhatsApp for current offers and instant slot booking." },
+            // Food
+            "المشويات والأطباق الرئيسية على الفحم": { title: "Charcoal Grills & Main Dishes", desc: "Freshly marinated meats and signature charcoal-grilled dishes prepared daily." },
+            "المأكولات البحرية الطازجة": { title: "Fresh Seafood Specialties", desc: "Daily catch of fresh fish and shrimp cooked to perfection for every taste." },
+            "حجز الطاولات والجلسات العائلية": { title: "Table & Family Lounge Booking", desc: "Refined, comfortable ambiance for individuals and families with advance table booking." },
+            "تجهيز الولائم والمناسبات الخاصة": { title: "Catering & Private Events", desc: "Custom catering and banquet packages for family gatherings and corporate events." },
+            "الطلب المباشر والتوصيل السريع": { title: "Direct Order & Fast Delivery", desc: "Order directly via WhatsApp for hot, fast delivery with zero platform fees." },
+            "تشكيلة الأطباق اليومية الطازجة": { title: "Daily Fresh Menu Selections", desc: "Signature dishes prepared fresh every day using the finest ingredients." },
+            "الطلب المباشر والحجوزات": { title: "Direct Ordering & Reservations", desc: "Message us on WhatsApp to reserve a table or place a direct menu order." },
+            // Service
+            "التصميم الداخلي والمخططات 3D": { title: "Interior Design & 3D Plans", desc: "Photorealistic 3D visualizations so you can preview your project before execution." },
+            "أعمال المقاولات والتشطيب المتكامل": { title: "Turnkey Contracting & Fit-Out", desc: "Complete renovation, flooring, custom ceilings, and luxury interior finishing." },
+            "تنسيق الحدائق والمسابح والجلسات": { title: "Landscaping, Pools & Pergolas", desc: "Custom garden design, water features, shaded lounges, and swimming pools." },
+            "خدمات الصيانة والتنظيف المتخصصة": { title: "Specialized Maintenance & Cleaning", desc: "Trained professionals equipped with modern tools for deep cleaning and maintenance." },
+            "طلب معاينة ميدانية وعرض سعر": { title: "Site Survey & Free Quotation", desc: "Message us on WhatsApp to book a site inspection and detailed cost estimate." },
+            "استشارة فنية ودراسة المشروع": { title: "Technical Consultation & Planning", desc: "Our team listens to your vision and delivers practical, high-value solutions." },
+            "طلب عرض سعر مفصل": { title: "Detailed Project Quotation", desc: "Get a clear, transparent cost breakdown directly via WhatsApp." }
+        };
+
+        function translateArabicServicesToEn(servicesList, fallbackServices) {
+            if (!Array.isArray(servicesList) || servicesList.length === 0) return fallbackServices;
+            const out = [];
+            const usedTitles = new Set();
+
+            for (const srv of servicesList) {
+                if (!hasArabicText(srv.title) && !hasArabicText(srv.desc)) {
+                    out.push(srv);
+                    usedTitles.add(srv.title);
+                } else if (ARABIC_SERVICE_TO_EN[srv.title]) {
+                    const mapped = ARABIC_SERVICE_TO_EN[srv.title];
+                    if (!usedTitles.has(mapped.title)) {
+                        out.push({ icon: srv.icon || "fa-solid fa-star", title: mapped.title, desc: mapped.desc });
+                        usedTitles.add(mapped.title);
+                    }
+                }
+            }
+
+            // Fill up to 4 services using the English preset if needed
+            for (const fb of (fallbackServices || [])) {
+                if (out.length >= 4) break;
+                if (!usedTitles.has(fb.title)) {
+                    out.push(fb);
+                    usedTitles.add(fb.title);
+                }
+            }
+            return out.length > 0 ? out : fallbackServices;
+        }
+
         function renderSite() {
             applyCustomThemeColors();
 
@@ -1356,24 +1616,73 @@
 
             if (SITE_CONFIG.customClientData) {
                 const cd = SITE_CONFIG.customClientData;
-                if (cd.businessName) content.businessName = cd.businessName;
                 if (cd.englishBrand) enBrand = cd.englishBrand;
                 if (cd.customLogoUrl) customLogoUrl = cd.customLogoUrl;
-                if (cd.heroTitle) content.heroTitle = cd.heroTitle;
-                if (cd.heroDesc) {
-                    // Auto-fix old clinic wording if the site is a Restaurant, Auto Care, or Service
-                    let rawDesc = cd.heroDesc;
-                    if (nicheKey === "food" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
-                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز طاولتك أو الطلب المباشر، تصفح صورنا وأصنافنا واستخدم النموذج أدناه");
-                    } else if (nicheKey === "auto" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
-                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز خدمة لسيارتك أو معرفة أسعار الباقات، شاهد أعمالنا واستخدم النموذج أدناه");
-                    } else if (nicheKey === "service" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
-                        rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لطلب معاينة ميدانية أو عرض سعر لمشروعك، شاهد أعمالنا واستخدم النموذج أدناه");
+
+                if (langKey === "en") {
+                    // 100% Pure English Mode: keep English values, auto-convert any Arabic values cleanly!
+                    if (cd.businessName && !hasArabicText(cd.businessName)) {
+                        content.businessName = cd.businessName;
+                    } else if (enBrand) {
+                        content.businessName = toTitleCaseEn(enBrand);
                     }
-                    content.heroDesc = rawDesc;
+
+                    if (cd.city) {
+                        content.city = translateArabicCityToEn(cd.city, content.city);
+                    }
+
+                    if (cd.hours) {
+                        content.hours = translateArabicHoursToEn(cd.hours, content.hours);
+                    }
+
+                    if (cd.heroTitle && !hasArabicText(cd.heroTitle)) {
+                        content.heroTitle = cd.heroTitle;
+                    }
+
+                    if (cd.heroDesc && !hasArabicText(cd.heroDesc)) {
+                        content.heroDesc = cd.heroDesc;
+                    } else {
+                        content.heroDesc = `Welcome to ${content.businessName} (${content.city}). ${content.heroDesc}`;
+                    }
+
+                    if (cd.services && Array.isArray(cd.services) && cd.services.length > 0) {
+                        content.services = translateArabicServicesToEn(cd.services, content.services);
+                    }
+
+                    if (cd.reviews && Array.isArray(cd.reviews) && cd.reviews.length > 0) {
+                        const enReviews = cd.reviews.filter(r => r && !hasArabicText(r.text) && !hasArabicText(r.name));
+                        for (let i = 0; i < Math.min(enReviews.length, 3); i++) {
+                            content.reviews[i] = enReviews[i];
+                        }
+                    }
+                } else {
+                    // Arabic Mode
+                    if (cd.businessName) content.businessName = cd.businessName;
+                    if (cd.heroTitle) content.heroTitle = cd.heroTitle;
+                    if (cd.heroDesc) {
+                        let rawDesc = cd.heroDesc;
+                        if (nicheKey === "food" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                            rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز طاولتك أو الطلب المباشر، تصفح صورنا وأصنافنا واستخدم النموذج أدناه");
+                        } else if (nicheKey === "auto" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                            rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لحجز خدمة لسيارتك أو معرفة أسعار الباقات، شاهد أعمالنا واستخدم النموذج أدناه");
+                        } else if (nicheKey === "service" && rawDesc.includes("لحجز موعد أو الاستفسار")) {
+                            rawDesc = rawDesc.replace("لحجز موعد أو الاستفسار، استخدم النموذج أدناه", "لطلب معاينة ميدانية أو عرض سعر لمشروعك، شاهد أعمالنا واستخدم النموذج أدناه");
+                        }
+                        content.heroDesc = rawDesc;
+                    }
+                    if (cd.city) content.city = cd.city;
+                    if (cd.hours) content.hours = cd.hours;
+
+                    if (cd.services && Array.isArray(cd.services) && cd.services.length > 0) {
+                        content.services = cd.services;
+                    }
+                    if (cd.reviews && Array.isArray(cd.reviews) && cd.reviews.length > 0) {
+                        for (let i = 0; i < Math.min(cd.reviews.length, 3); i++) {
+                            content.reviews[i] = cd.reviews[i];
+                        }
+                    }
                 }
-                if (cd.city) content.city = cd.city;
-                if (cd.hours) content.hours = cd.hours;
+
                 if (cd.heroImg) activeHeroImg = cd.heroImg;
                 if (cd.coverRightImg) activeCoverRightImg = cd.coverRightImg;
 
@@ -1389,15 +1698,6 @@
                     activeGallery = combinedGal;
                 } else {
                     activeGallery = preset.gallery.filter(img => img !== activeHeroImg);
-                }
-
-                if (cd.services && Array.isArray(cd.services) && cd.services.length > 0) {
-                    content.services = cd.services;
-                }
-                if (cd.reviews && Array.isArray(cd.reviews) && cd.reviews.length > 0) {
-                    for (let i = 0; i < Math.min(cd.reviews.length, 3); i++) {
-                        content.reviews[i] = cd.reviews[i];
-                    }
                 }
             }
 
@@ -1462,8 +1762,21 @@
 
             const activeAccent = (SITE_CONFIG.themeColors && SITE_CONFIG.themeColors.accentColor) || "#a68a3d";
             const activeLogoStyle = SITE_CONFIG.logoStyle || 1;
+            const galHintEl = document.getElementById("gallery-zoom-hint");
+            if (galHintEl) {
+                galHintEl.innerHTML = langKey === "en"
+                    ? '<i class="fa-solid fa-magnifying-glass-plus"></i> Click any photo to view fullscreen & zoom'
+                    : '<i class="fa-solid fa-magnifying-glass-plus"></i> اضغط على أي صورة لفتحها بالحجم الكامل وتكبيرها';
+            }
+            const lbHintEl = document.getElementById("lightbox-hint");
+            if (lbHintEl) {
+                lbHintEl.innerText = langKey === "en"
+                    ? "💡 Pinch with two fingers or double-tap to zoom in"
+                    : "💡 يمكنك تكبير الصورة بإصبعين (Pinch Zoom) أو النقر مرتين على الصورة";
+            }
+
             document.getElementById("custom-svg-logo").innerHTML = buildCustomSvgLogo(
-                content.businessName, enBrand, nicheKey, activeLogoStyle, activeAccent, customLogoUrl
+                content.businessName, enBrand, nicheKey, activeLogoStyle, activeAccent, customLogoUrl, langKey
             );
 
             document.getElementById("hero-title").innerText = content.heroTitle;
@@ -1471,6 +1784,9 @@
             document.getElementById("cover-img-left").src = activeHeroImg;
             document.getElementById("cover-img-right").src = activeCoverRightImg || activeGallery[0] || activeHeroImg;
             document.getElementById("mobile-hero-img").src = activeHeroImg;
+            document.getElementById("cover-img-left").onerror = function() { this.onerror = null; this.src = preset.heroImg; };
+            document.getElementById("cover-img-right").onerror = function() { this.onerror = null; this.src = preset.heroImg; };
+            document.getElementById("mobile-hero-img").onerror = function() { this.onerror = null; this.src = preset.heroImg; };
 
             document.getElementById("hero-desc").innerText = content.heroDesc;
             document.getElementById("booking-address").innerText = content.city;
@@ -1580,8 +1896,18 @@
                 reviewsGrid.appendChild(rCard);
             });
 
-            const mapQuery = encodeURIComponent(`${content.businessName} ${content.city}`);
-            document.getElementById("live-google-map").src = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+            const mapIframe = document.getElementById("live-google-map");
+            if (SITE_CONFIG.mapCoords) {
+                mapIframe.src = `https://maps.google.com/maps?q=${SITE_CONFIG.mapCoords}&hl=${langKey}&z=17&output=embed`;
+            } else {
+                const mapQuery = encodeURIComponent(`${content.businessName} ${content.city}`);
+                mapIframe.src = `https://maps.google.com/maps?q=${mapQuery}&hl=${langKey}&z=15&output=embed`;
+            }
+            const directMapBtn = document.getElementById("map-direct-card-btn");
+            if (directMapBtn) {
+                directMapBtn.href = SITE_CONFIG.googleMapsUrl;
+                document.getElementById("map-direct-btn-text").innerText = ui.footerMap;
+            }
             document.getElementById("footer-copy").innerText = `© ${new Date().getFullYear()} ${content.businessName} - ${ui.rights}`;
             document.getElementById("footer-map-link").href = SITE_CONFIG.googleMapsUrl;
         }
